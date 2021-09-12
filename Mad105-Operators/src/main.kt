@@ -1,7 +1,7 @@
 fun main() {
 
     // arithmetic operators (+, -, *, /, %)
-    var num1: Int = 4
+    var num1 = 4 // intellij wanted me to remove the variable declaration in this line
     var num2: Int = -19
     val sum: Int = num1 + num2
     val diff: Int = num1 - num2
@@ -35,10 +35,13 @@ fun main() {
 
 
     // increment, decrement
+    print("Increment $num1 by 1: ")
     num1++
-    num2--
+    println(num1)
 
-    println("new numbers: $num1 and $num2")
+    print("Decrement $num2 by 1: ")
+    num2--
+    println(num2)
 
 
 }
