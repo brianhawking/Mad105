@@ -3,6 +3,7 @@ fun main() {
     var genreChoice: String
 
     do {
+        // ask the user what they want
         println("What can I help you find?")
         println("1) Mystery")
         println("2) Thriller")
@@ -12,6 +13,8 @@ fun main() {
         println("6) Exit Menu")
 
         print("Select a choice: ")
+        
+        // store user choice
         userChoice = readLine()!!.toInt()
 
         println("==================================")
