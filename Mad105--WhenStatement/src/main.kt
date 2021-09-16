@@ -22,7 +22,7 @@ fun main() {
             else -> "Something went wrong"
         }
 
-        println("$number is $numberString")
+        println("$number is $numberString in German")
     }
 
 }
