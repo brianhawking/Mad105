@@ -13,11 +13,13 @@ fun main() {
 
         print("Select a choice: ")
         userChoice = readLine()!!.toInt()
+
+        println("==================================")
         if (userChoice !in 1..6) {
             println("You selected an invalid number. Please try again.")
         }
         else {
-//            println("You selected $userChoice) ${choices[userChoice-1]}")
+
             genreChoice = when (userChoice) {
                 1 -> "Mystery"
                 2 -> "Thriller"
