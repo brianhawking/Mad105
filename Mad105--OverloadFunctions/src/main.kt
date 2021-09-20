@@ -1,7 +1,19 @@
+/********************************************************************
+Mad 105 - Overload a function
+
+Programmer: Brian Veitch
+
+Purpose:   Practice writing overloaded functions.
+
+ User is prompted to choose Business or Residential. The function
+ StoreCustomerInfo is called but with different parameters depending
+ on if you are a business or residential customer.
+ *********************************************************************/
+
 fun main() {
 
     var userChoice: Int
-    var businessName: String = ""
+    var businessName = ""
 
     do {
         println("1) Business Customer")

@@ -1,0 +1,57 @@
+Pseudocode for Overloading Functions
+
+Variables
+    - businessName: String
+    - contactName: String, name of business or residential customer
+    - phoneNumber: String, phone number of business or residential customer
+    - userChoice: Int, determines if user is business or residential
+
+Process
+
+    - Ask user if they are business or residential.
+    - getUserChoice() to get their choice
+    - validate user input
+
+    if userChoice == 1 (is business)
+
+        - get businessName, contactName, and phoneNumber
+        - call StoreCustomerInfo(businessName, contactName, and phoneNumber)
+        - display results
+
+    else (is residential)
+
+        - get contactName and phoneNumber
+        - call StoreCustomerInfo(contactName, phoneNumber)
+        - display results
+
+Functions
+
+    StoreCustomerInfo(businessName, contactName, phoneNumber) - Overloaded
+
+        Variables
+            - from parameters
+
+        Process
+            - print customer info to console
+
+    StoreCustomerInfo(contactName, phoneNumber) - Overloaded
+
+        Variables
+            - from parameters
+
+        Process
+            - print customer info to console
+
+    getCustomerType()
+        - returns 1 or 2
+        - validates user info
+
+        Variables
+            - number: Int, from user input
+
+        Process
+            - if number != 1 or 2, keep asking
+            - else return 1 or 2
+
+
+
