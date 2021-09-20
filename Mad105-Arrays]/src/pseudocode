@@ -1,0 +1,10 @@
+Pseudocode for Intro to Arrays
+
+Variables
+    - hotDogItems: array of strings, contains items found in hot dog stand
+
+Process
+    - use two different for loops to display items to console
+    - for item in array { print item }
+    - for (i in 0 until hotDogItems.size -1) { print hotDogItems[i] }
+
