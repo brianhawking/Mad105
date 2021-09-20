@@ -17,6 +17,7 @@ fun main() {
             2 -> areaOfCircle()
             3 -> areaOfTrapezoid()
             4 -> areaOfTriangle()
+            5 -> println("Have a great day.")
             else -> println("============================\nInvalid selection. Try again\n============================")
         }
     } while( userChoice != 5)

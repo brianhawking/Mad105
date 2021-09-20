@@ -1,0 +1,73 @@
+Variables 
+
+      - userChoice: used to determine which shape the user chooses
+
+Process
+
+     - Print options for user: rectangle, circle, trapezoid, triangle
+     - Accept user choice 
+     - validate user input
+     - call appropriate function in when loop
+     - use getPositiveFloat for user input
+     - print outcome
+
+
+Functions
+
+     - getPositiveFloat() -> returns Float
+
+          Variables 
+
+               - number: Float from user
+
+          Process
+               - do while
+               - ask for a positive number
+               - check if it's positive
+               - continue do while if it's <= 0
+               - end do while
+               - return float
+
+     - areaOfRectangle -> returns Float
+
+          Variables 
+               - length: Float, length of rectangle
+               - width: Float, width of rectangle
+
+          Process
+               - getPositiveFloat for length and width
+               - calculate area = length x width
+               - print result
+
+     - areaOfCircle
+
+          Variables 
+               - radius: Float, radius of circle
+
+          Process
+               - getPositiveFloat for radius
+               - calculate area = pi * radius^2
+               - print result
+
+     - areaOfTrapezoid
+
+          Variables 
+               - longBase: Float, length of big base
+               - shortBase: Float, length of short base
+               - height: Float, height of trapezoid
+
+          Process
+               - getPositiveFloat for longBase, shortBase, and height
+               - calculate area = 1/2*height*(longBase + shortBase)
+               - print result
+
+     - areaOfTriangle 
+
+          Variables 
+               - base: Float, base of triangle
+               - height: Float, height of triangle
+
+          Process
+               - getPositiveFloat for base and height
+               - calculate area = 1/2 * base * height
+               - print result
