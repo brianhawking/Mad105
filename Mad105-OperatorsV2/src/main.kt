@@ -1,3 +1,12 @@
+/********************************************************************
+Mad 105 - Opeartors
+
+Programmer: Brian Veitch
+
+Purpose:   Familiarize with arithmetic, comparison, assignment, and
+ increment/decrement operators. 
+ *********************************************************************/
+
 fun main() {
 
     // arithmetic operators (+, -, *, /, %)

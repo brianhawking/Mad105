@@ -1,3 +1,13 @@
+/********************************************************************
+Mad 105 - Area Functions
+
+Programmer: Brian Veitch
+
+Purpose:   Find the area of a rectangle, circle, trapezoid, or triangle.
+ User is prompted with those four options (or to quit loop). Appropriate
+ function is called and results are printed to the console.
+ *********************************************************************/
+
 fun main() {
 
     var userChoice: Int

@@ -1,14 +1,3 @@
-fun storeCustomerInfo(business: String, contact: String, phone: String) {
-    println(business)
-    println(contact)
-    println(phone)
-}
-
-fun storeCustomerInfo(contact: String, phone: String) {
-    println(contact)
-    println(phone)
-}
-
 fun main() {
 
     var userChoice: Int
@@ -40,7 +29,9 @@ fun main() {
 
     } while (userChoice != 0)
 
-}fun getCustomerType():Int {
+}
+
+fun getCustomerType():Int {
 
     var number: Int
     do {
@@ -54,5 +45,16 @@ fun main() {
     } while (number !in 1..2)
 
     return number
+}
+
+fun storeCustomerInfo(business: String, contact: String, phone: String) {
+    println(business)
+    println(contact)
+    println(phone)
+}
+
+fun storeCustomerInfo(contact: String, phone: String) {
+    println(contact)
+    println(phone)
 }
 

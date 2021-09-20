@@ -1,3 +1,12 @@
+/********************************************************************
+Mad 105 - Using a Loop
+
+Programmer: Brian Veitch
+
+Purpose:   User is prompted with the question "what can I help you find?" Will loop
+until users enters a valid number. Will println the user's choice.
+ *********************************************************************/
+
 fun main() {
     var userChoice: Int
     var genreChoice: String

@@ -1,3 +1,12 @@
+/********************************************************************
+Mad 105 - Fall 2021
+
+Progammer: Brian Veitch
+
+Purpose:  Prompt the user to enter a number from 1 to 10. Using a when statement,
+ the program outputs the number in German.
+ *********************************************************************/
+
 fun main() {
     // variables
     var number = 1

@@ -1,6 +1,15 @@
+/********************************************************************
+Mad 105 - If else control statements
+
+Programmer: Brian Veitch
+
+Purpose:   User is prompted with entering a body temperature. Using if,else
+ statements, program will output if body temperature is low, normal, or high.
+ *********************************************************************/
+
 fun main() {
 
-    var temperature: Float = 96.8F
+    var temperature = 96.8F
 
     while (temperature != 0.0F) {
         println("Enter a body temperature. 0 to quit.")
