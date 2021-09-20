@@ -1,11 +1,13 @@
-Variables 
+Pseudocode for Functions - Find Area of Shapes
+
+Variables
 
       - userChoice: used to determine which shape the user chooses
 
 Process
 
      - Print options for user: rectangle, circle, trapezoid, triangle
-     - Accept user choice 
+     - Accept user choice
      - validate user input
      - call appropriate function in when loop
      - use getPositiveFloat for user input
@@ -16,7 +18,7 @@ Functions
 
      - getPositiveFloat() -> returns Float
 
-          Variables 
+          Variables
 
                - number: Float from user
 
@@ -30,7 +32,7 @@ Functions
 
      - areaOfRectangle -> returns Float
 
-          Variables 
+          Variables
                - length: Float, length of rectangle
                - width: Float, width of rectangle
 
@@ -41,7 +43,7 @@ Functions
 
      - areaOfCircle
 
-          Variables 
+          Variables
                - radius: Float, radius of circle
 
           Process
@@ -51,7 +53,7 @@ Functions
 
      - areaOfTrapezoid
 
-          Variables 
+          Variables
                - longBase: Float, length of big base
                - shortBase: Float, length of short base
                - height: Float, height of trapezoid
@@ -61,9 +63,9 @@ Functions
                - calculate area = 1/2*height*(longBase + shortBase)
                - print result
 
-     - areaOfTriangle 
+     - areaOfTriangle
 
-          Variables 
+          Variables
                - base: Float, base of triangle
                - height: Float, height of triangle
 
