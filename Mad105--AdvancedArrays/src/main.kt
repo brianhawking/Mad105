@@ -47,18 +47,22 @@ fun firstWay(items: Array<String>, quantity: Array<String>) {
     inventory += quantity
 
     for (i in inventory[0].indices) {
-        println("There are ${inventory[1][i]} ${inventory[0][i]} left")
+        val item = inventory[0][i]
+        val qty = inventory[1][i]
+        println("There are $qty $item left")
     }
 }
 
 fun secondWay(items: Array<String>, quantity: Array<String>) {
     var inventory = arrayOf<Array<String>>()
-    
+
     for (i in items.indices) {
         inventory += arrayOf(items[i], quantity[i])
     }
 
     for (i in inventory.indices) {
-        println("There are ${inventory[i][1]} ${inventory[i][0]} left.")
+        val item = inventory[i][0]
+        val qty = inventory[i][1]
+        println("There are $qty $item left.")
     }
 }
