@@ -1,35 +1,35 @@
-/*
-The array should hold inventory items and count of items in inventory.
-The user should be able to search for any item and have the item name and amount on hand appear on screen (format them nicely).
-The user should be able to add or subtract from any of the inventory. Have an error message if the count would become less than 0, and set the count to 0. Display the name of the item, the original amount, the amount added or taken away, and the new tota
- */
+/********************************************************************
+Mad 105 - Advanced Arrays
+
+Programmer: Brian Veitch
+
+Purpose:   Define and use a multidimensional array
+
+ I want to set up the array in two different ways. The first
+ will be like the video. The second is the way I would have done it.
+ *********************************************************************/
+
 
 fun main() {
-    val hotDogItems = arrayOf(
-        arrayOf("hot dog", 4),
-        arrayOf("bun", 18),
-        arrayOf("ketchup", 50),
-        arrayOf("mustard", 72),
-        arrayOf("salt", 200),
-        arrayOf("pickle", 14),
-        arrayOf("tomatoes", 7)
-    )
-    val iceCreamItems = arrayOf("vanilla", "chocolate", "strawberry", "cone", "bowl", "chocolate chips", "sprinkles")
-    val smoothieItems = arrayOf("milk", "strawberries", "banana", "apple", "acai", "blueberries", "peach", "small", "medium", "large")
+
+
+    val hotDogItems = arrayOf("hot dog", "bun", "ketchup", "mustard", "salt", "pickle", "tomatoes", "relish", "onion")
+    val quantity = arrayOf("5", "18", "50", "72", "200", "14", "7", "18", "8")
+
+    firstWay(hotDogItems, quantity)
+    secondWay()
 
     println("Hot dog stand items")
-    for (item in hotDogItems) {
-        println("There are ${item[1]} items of ${item[0]} left.")
+    for (i in 0 until hotDogItems.size) {
+        println("There are ${quantity[i]} items of ${hotDogItems[i]} left.")
     }
+}
 
-//    println("Ice cream shop items")
-//    for (i in 0 until iceCreamItems.size -1) {
-//        println(iceCreamItems[i])
-//    }
-//
-//    println("Smoothie ship items")
-//    for (item in smoothieItems) {
-//        println(item)
-//    }
 
+fun firstWay(items: Array<String>, quantity: Array<String>) {
+    println("First way")
+}
+
+fun secondWay() {
+    println("Second way")
 }

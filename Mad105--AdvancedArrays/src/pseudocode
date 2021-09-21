@@ -1,0 +1,36 @@
+Pseudocode for Advanced Arrays
+
+Variables
+    - hogDogItems: Array<String>, list of hot dog stand items
+    - quantity: Array<String>, corresponding quantity to each hogDogItem
+
+
+Process
+    - Declare the hotDogItems and its quantity arrays
+    - For loop to display items with their remaining quantity
+    - Create a multidimensional array using hotDogItems and quantity
+    - firstWay()
+    - secondWay()
+
+Functions
+
+    firstWay()
+
+        Variables
+            - inventory: arrayOf<Array<String>>
+
+        Process
+            - append items array to inventory[0]
+            - append quantity array to inventory[1]
+            - access item and quantity by "there are ${inventory[1][i]} ${inventory[0][i]} left."
+
+    secondWay()
+
+        Variables
+            - inventory: arrayOf<Array<String>>
+
+        Process
+            - append items[i] and quantity[i] to inventory[i]:
+            - inventory[i][1] = items[i]
+            - inventory[i][0] = quantity[i]
+            - access item and quantity by "there are ${inventory[i][1]} ${inventory[i][0]} left."
