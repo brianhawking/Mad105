@@ -26,6 +26,9 @@ Process
     - calculate tip = recommendedTip * totalCost
     - calculate total, add totalCost, totalTax, and tip
 
+    - ask user if they want to try a different tip percentage
+    - display new results
+
 Function
 
     getCost()

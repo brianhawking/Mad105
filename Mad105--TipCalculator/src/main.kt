@@ -44,10 +44,10 @@ fun main() {
 
     // display results
     println("\n==== Total ===============================")
-    println("Subtotal:      ${twoDigits.format(totalCost)}")
-    println("Tax:           ${twoDigits.format(totalTax)}")
-    println("Tip: (17.5%)   ${twoDigits.format(tip)}")
-    println("Total:         ${twoDigits.format(total)}")
+    println("Subtotal:      ${twoDigits.format(totalCost+0.001)}")
+    println("Tax:           ${twoDigits.format(totalTax+0.001)}")
+    println("Tip: (17.5%)   ${twoDigits.format(tip+0.001)}")
+    println("Total:         ${twoDigits.format(total+0.001)}")
 
     do {
         // ask for a different tip
@@ -64,10 +64,10 @@ fun main() {
 
             // display results
             println("\n==== Total ===============================")
-            println("Subtotal:      ${twoDigits.format(totalCost)}")
-            println("Tax:           ${twoDigits.format(totalTax)}")
-            println("Tip: ($tipPercentage%)   ${twoDigits.format(tip)}")
-            println("Total:         ${twoDigits.format(total)}")
+            println("Subtotal:      ${twoDigits.format(totalCost+0.001)}")
+            println("Tax:           ${twoDigits.format(totalTax+0.001)}")
+            println("Tip: ($tipPercentage%)   ${twoDigits.format(tip+0.001)}")
+            println("Total:         ${twoDigits.format(total+0.001)}")
         }
 
 
