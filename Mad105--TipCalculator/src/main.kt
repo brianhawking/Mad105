@@ -38,7 +38,7 @@ fun main() {
     val totalTax: Double = tax * totalCost
 
     // get tip amount
-    val tip: Double = (recommendedTip * totalCost)
+    var tip: Double = (recommendedTip * totalCost)
 
     val total = totalCost + totalTax + tip
 
@@ -48,6 +48,33 @@ fun main() {
     println("Tax:           ${twoDigits.format(totalTax)}")
     println("Tip: (17.5%)   ${twoDigits.format(tip)}")
     println("Total:         ${twoDigits.format(total)}")
+
+    do {
+        // ask for a different tip
+        println("Do you want to use a different tip?")
+        println("Enter 1 for Yes")
+        println("Enter 2 for No")
+        val choice = readLine()!!.toInt()
+
+        if (choice == 1) {
+            // recalculate
+            print("Enter a new tip percentage (Ex. 5.2): ")
+            val tipPercentage = readLine()!!.toDouble()
+            tip = tipPercentage / 100 * totalCost
+
+            // display results
+            println("\n==== Total ===============================")
+            println("Subtotal:      ${twoDigits.format(totalCost)}")
+            println("Tax:           ${twoDigits.format(totalTax)}")
+            println("Tip: ($tipPercentage%)   ${twoDigits.format(tip)}")
+            println("Total:         ${twoDigits.format(total)}")
+        }
+
+
+
+    } while (choice != 2)
+
+    println("\nHave a great day.")
 
 }
 
