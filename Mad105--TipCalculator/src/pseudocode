@@ -1,0 +1,36 @@
+Pseudocode for TipCalculator
+
+Variables, constants
+
+    - tax: Double, use 2.5%
+    - recommendedTip: Double, use 17.5%
+
+    - itemCost: Double, user inputted item cost
+    - itemsArray: array containing all the items' cost
+
+    - totalCost: Double, cost of all items pretax
+    - totalTax: Double, tax of 2.5% on totalCost
+    - tip: Double, 17.5% of the totalCost
+
+    - total: Double, add totalCost, totalTax, and tip
+
+    - two Digits: DecimalFormatter, convert double to string with two decimals
+
+Process
+
+    - Prompt user to enter an item cost
+    - validate the input
+    - continue doing this until user presses 0
+    - calculate totalCost (add items in array)
+    - calculate totalTax = tax * totalCost
+    - calculate tip = recommendedTip * totalCost
+    - calculate total, add totalCost, totalTax, and tip
+
+Function
+
+    getCost()
+        - prompt user to enter a cost
+        - if itemCost < 0, ask again
+        - continue until item is non-negative
+        - return itemCost
+
