@@ -1,0 +1,19 @@
+Pseudocode for Quiz app
+
+Variables
+
+    - questions: multidimensional array containing questions and their answers
+    - userAnswers: array containing user's answers to the questions
+    - questionsCorrect: counter for correct answers
+
+Process
+
+    - for loop
+    - prompt user with question
+    - store answer
+    - check answer against questions array
+    - if correct, increment questionsCorrect
+    - display whether their answer was correct / incorrect
+    - end for loop
+
+    - display overall score
