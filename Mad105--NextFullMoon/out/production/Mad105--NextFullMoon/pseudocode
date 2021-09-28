@@ -1,0 +1,26 @@
+Pseudocode for Time Until Full Moon
+
+Variables
+
+    - formatter: DateTimeFormatter to output nice string
+    - today: current datetime
+    - baseFullMoon: dateTime of the 9/20/2021 full moon
+    - timeBetweenFullMoons: Long, convert 29 days, 12 hours, 44 minutes to minutes
+    - arrayOfFullMoons: Array<LocalDateTime>, array of full moon dateTimes
+    - nextFullMoon: dateTime, first dateTime in array that is after the currentTime
+    - timeUntil: between between current date and next full moon
+
+Process
+
+    - set first full moon at 9/20/2021
+    - convert the 29 days, 12 hours, 44 minutes to minutes
+    - generate a list of all the full moon dateTimes by adding multiples of timeBetweenFullMoons
+    - get current date
+    - for loop through arrayOfFullMoons
+        - if today is before fullMoon
+             - set fullMoon as the next FullMoon
+             - calculate time between current date and fullMoon
+             - break
+    - end for loop
+
+    - display current date, time until next full moon, and date of next full moon.
