@@ -46,6 +46,7 @@ fun main() {
     // display results
     println("Today's Date: ${today.format(formatter)}")
     println("The next full moon is $timeUntil days away on ${nextFullMoon.format(formatter)}")
+    println("Wear silver or stay inside until ${nextFullMoon.plusDays(3).format(formatter)}")
 
 
 
