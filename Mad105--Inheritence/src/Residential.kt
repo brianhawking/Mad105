@@ -1,5 +1,22 @@
 import java.text.DecimalFormat
 
+/**
+ * Class - Residential
+ * @author - Brian Veitch
+ * date - 10/8
+ * @param
+ * customerName - name of customer
+ * customerPhone - phone number of customer
+ * customerAddress - address of customer
+ * squareFootage - square footage of area needing maintenance
+ * rate - how much per 1000 square feet
+ * seniorDiscount - boolean, is customer a senior
+ * weeklyCost - total weekly cost of maintenance
+ *
+ * mods
+ * BV
+ */
+
 class Residential(
     var isSenior: Boolean,
     customerName: String,

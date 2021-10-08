@@ -1,5 +1,22 @@
 import java.text.DecimalFormat
 
+/**
+ * Class - Commercial
+ * @author - Brian Veitch
+ * date - 10/8
+ * @param
+ * customerName - name of customer
+ * customerPhone - phone number of customer
+ * customerAddress - address of customer
+ * squareFootage - square footage of area needing maintenance
+ * propertyName - name of commercial property
+ * rate - how much per 1000 square feet
+ * multiPropertyDiscount - boolean, does the request involve multiple properties
+ * weeklyCost - total weekly cost of maintenance
+ *
+ * mods
+ * BV
+ */
 class Commercial(
     var propertyName: String,
     var isMultiProperty: Boolean,

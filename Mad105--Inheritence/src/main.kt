@@ -1,3 +1,16 @@
+/**
+ * Function - main
+ * @author - Brian Veitch
+ * date - 10/8
+ * @param
+ * userChoice - get innput from user
+ * @description
+ * Get customer information (residential or commercial) for a landscaping quote
+ *
+ * mods
+ * BV
+ */
+
 fun main() {
 
     var userChoice: Int
@@ -19,6 +32,24 @@ fun main() {
     } while( userChoice != 3)
 }
 
+
+/**
+ * Function - getCustomerInfo
+ * @author - Brian Veitch
+ * date - 10/8
+ * @param
+ * type, is the customer residential or commercial
+ * customerName - name of customer
+ * customerPhone - phone number of customer
+ * customerAddress - address of customer
+ * squareFootage - square footage of area needing maintenance
+ *
+ * @description
+ * get user info (name, address, phone, etc.)
+ *
+ * mods
+ * BV
+ */
 fun getCustomerInfo(type: String) {
 
     print("Customer name: ")
@@ -81,6 +112,14 @@ fun getCustomerInfo(type: String) {
 
 }
 
+/**
+ * Function getPositiveDouble
+ * @author - Brian Veitch
+ * @params
+ * userInput - get user input from console
+ * @description
+ * get userinput, make sure it's a positive number
+ */
 fun getPositiveDouble() : Double {
     var userInput: Double
     do {
