@@ -3,7 +3,7 @@
  * @author - Brian Veitch
  * date - 10/8
  * @param
- * userChoice - get innput from user
+ * userChoice - get input from user
  * @description
  * Get customer information (residential or commercial) for a landscaping quote
  *
