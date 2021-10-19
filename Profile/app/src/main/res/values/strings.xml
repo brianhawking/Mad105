@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Profile</string>
+
+    <!-- MainActivity, MainActivity2 -->
     <string name="textName">Brian Veitch</string>
     <string name="textButtonProfile">View Profile</string>
+
+    <!-- MainActivity2 -->
     <string name="textProfileInformation">Hi, my name is Brian. \nI am a programmer, teacher, and youtuber.</string>
 </resources>

@@ -11,6 +11,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var buttonProfile = findViewById<Button>(R.id.idButtonViewProfile) as Button
+
+        // button to transition to MainActivity2
         buttonProfile.setOnClickListener{
             var intent = Intent(this,MainActivity2::class.java)
             startActivity(intent)
