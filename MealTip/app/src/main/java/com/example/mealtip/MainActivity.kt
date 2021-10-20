@@ -1,4 +1,17 @@
-
+/**
+ * Class - MainActivity
+ * @author - Brian Veitch
+ * date - 10/20
+ * @param
+ * tip, tipPercentage, cost, totalCost
+ * User input
+ * mealCost, tip, result
+ * @description
+ * User enters the cost of their meal and selects a tip percentage. App will
+ * calculate tip and total cost with tip.
+ * mods
+ * BV
+ */
 
 package com.example.mealtip
 
@@ -46,9 +59,11 @@ class MainActivity : AppCompatActivity() {
                 "25%" -> tipPercentage = 0.25
             }
 
+            // calculate tip and total cost
             tip = cost * tipPercentage
             totalCost = cost + tip
 
+            // format to display
             val tipFormatted = currency.format(tip)
             val costFormatted = currency.format(totalCost)
 
