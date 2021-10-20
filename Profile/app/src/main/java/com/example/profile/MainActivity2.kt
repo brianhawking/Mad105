@@ -1,11 +1,12 @@
 /**
  * Class - MainActivity2
  * @author - Brian Veitch
- * date - 10/8
+ * date - 10/16
  * @param
- * userChoice - get input from user
+ * None
  * @description
- * Get customer information (residential or commercial) for a landscaping quote
+ * Display name and profile
+ * Uses strings.xml to store name,profile
  *
  * mods
  * BV

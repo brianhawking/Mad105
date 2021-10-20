@@ -1,12 +1,12 @@
 /**
 * Class - mainActivity
 * @author - Brian Veitch
-* date - 10/8
+* date - 10/16
 * @param
-* userChoice - get input from user
+* buttonProfile
 * @description
-* Get customer information (residential or commercial) for a landscaping quote
-*
+* Display name, profile image, and view profile button
+
 * mods
 * BV
 */
