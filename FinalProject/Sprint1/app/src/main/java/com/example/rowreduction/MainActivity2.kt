@@ -11,18 +11,18 @@ class MainActivity2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        val bundle: Bundle? = intent.extras
-        val number = bundle?.getStringArray("Number")
-        println(bundle)
-
-        val textView: TextView = findViewById(R.id.textView)
-        textView.text = number
-
-        val buttonSubmit: Button = findViewById(R.id.buttonSubmit)
-
-        buttonSubmit.setOnClickListener {
-            finish()
-        }
+//        val bundle: Bundle? = intent.extras
+//        val number = bundle?.getStringArray("Number")
+//        println(bundle)
+//
+//        val textView: TextView = findViewById(R.id.textView)
+//        textView.text = number.toString()
+//
+//        val buttonSubmit: Button = findViewById(R.id.buttonSubmit)
+//
+//        buttonSubmit.setOnClickListener {
+//            finish()
+//        }
 
     }
 }
