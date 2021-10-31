@@ -11,14 +11,12 @@
         android:theme="@style/Theme.RowReduction">
         <activity
             android:name=".MultiplyByConstantActivity"
-            android:exported="false" />
-        <!-- <activity -->
-        <!-- android:name=".SwapRows" -->
-        <!-- android:exported="false" /> -->
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
             android:name=".SwapRows"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"/>
         <activity
             android:name=".MainActivity2"
             android:exported="false" />

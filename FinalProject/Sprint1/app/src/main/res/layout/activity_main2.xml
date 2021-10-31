@@ -10,6 +10,7 @@
 
 
     <TableLayout
+        android:id="@+id/matrixTable"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -18,34 +19,64 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="0.2">
 
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:layout_gravity="center"
+                android:background="@color/black"/>
+
             <TextView
-                style="@style/Coefficient"
                 android:id="@+id/coefficientX1"
+                style="@style/Coefficient"
                 android:textSize="24sp" />
 
             <TextView
-                style="@style/Coefficient"
                 android:id="@+id/coefficientY1"
+                style="@style/Coefficient"
                 android:textSize="24sp" />
 
             <TextView
-                style="@style/Coefficient"
                 android:id="@+id/coefficientZ1"
+                style="@style/Coefficient"
                 android:textSize="24sp" />
 
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@color/black" />
+
             <TextView
-                style="@style/Coefficient"
                 android:id="@+id/coefficientC1"
+                style="@style/Coefficient"
                 android:textSize="24sp" />
+
+            <View
+                android:id="@+id/divider7"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="?android:attr/listDivider" />
+
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.2">
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="?android:attr/listDivider" />
 
             <TextView
                 style="@style/Coefficient"
@@ -62,16 +93,39 @@
                 android:id="@+id/coefficientZ2"
                 android:textSize="24sp" />
 
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@color/black"
+                />
+
             <TextView
                 style="@style/Coefficient"
                 android:id="@+id/coefficientC2"
                 android:textSize="24sp" />
+
+            <View
+                android:id="@+id/divider8"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="?android:attr/listDivider" />
+
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.2">
+
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@color/black" />
 
             <TextView
                 style="@style/Coefficient"
@@ -88,13 +142,34 @@
                 android:id="@+id/coefficientZ3"
                 android:textSize="24sp" />
 
+            <View
+                android:id="@+id/divider"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="@color/black" />
+
             <TextView
                 style="@style/Coefficient"
                 android:id="@+id/coefficientC3"
                 android:textSize="24sp" />
+
+            <View
+                android:id="@+id/divider9"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="?android:attr/listDivider" />
         </TableRow>
 
     </TableLayout>
+
+<!--    <View-->
+<!--        android:layout_width="2pt"-->
+<!--        android:layout_height="50pt"-->
+<!--        android:background="@color/black"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/matrixTable3"-->
+<!--        />-->
 
     <LinearLayout
         android:layout_width="match_parent"

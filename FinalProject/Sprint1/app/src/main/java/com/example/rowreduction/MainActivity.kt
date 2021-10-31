@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -32,7 +33,11 @@ class MainActivity : AppCompatActivity() {
         R.id.buttonDot,
         R.id.buttonLeft,
         R.id.buttonRight,
-        R.id.buttonFrac
+        R.id.buttonFrac,
+        R.id.buttonSubEqn,
+        R.id.buttonAddEqn,
+        R.id.buttonAddVar,
+        R.id.buttonSubVar
     )
 
     private var equationIDs = arrayOf(
@@ -40,6 +45,35 @@ class MainActivity : AppCompatActivity() {
         arrayOf(R.id.coefficientX2, R.id.coefficientY2, R.id.coefficientZ2, R.id.coefficientC2),
         arrayOf(R.id.coefficientX3, R.id.coefficientY3, R.id.coefficientZ3, R.id.coefficientC3)
     )
+
+    var plusIDs = arrayOf(
+        R.id.equation12Plus,
+        R.id.equation22Plus,
+        R.id.equation32Plus
+    )
+
+    var zVariable = arrayOf(
+        R.id.equation1Z,
+        R.id.equation2Z,
+        R.id.equation3Z
+    )
+
+    var row3 = arrayOf(
+        R.id.coefficientX3,
+        R.id.coefficientY3,
+        R.id.coefficientZ3,
+        R.id.coefficientC3,
+        R.id.equation3X,
+        R.id.equation31Plus,
+        
+        R.id.equation3Y,
+        R.id.equation32Plus,
+
+        R.id.equation3Z,
+        R.id.equation3Equals,
+
+    )
+
 
     // variable containing all coefficients
     var matrix = Matrix()
@@ -68,6 +102,9 @@ class MainActivity : AppCompatActivity() {
                 if( (buttonID == R.id.buttonLeft) || (buttonID == R.id.buttonRight)) {
                     moveBox(buttonID)
                 }
+                else if(buttonID == R.id.buttonSubVar || buttonID == R.id.buttonAddVar || buttonID == R.id.buttonAddEqn || buttonID == R.id.buttonSubEqn) {
+                    changeSize(buttonID)
+                }
                 else if(buttonID == R.id.setupMatrix) {
                      if (validate()) {
                          // move to next screen
@@ -76,6 +113,45 @@ class MainActivity : AppCompatActivity() {
                 }
                 else {
                     editNumber(buttonID)
+                }
+            }
+        }
+    }
+
+    fun changeSize(id: Int) {
+
+        when (id) {
+            R.id.buttonSubVar -> {
+                println("SUBTRACT")
+                for(i in matrix.coefficients.indices) {
+                    val coefficient: TextView = findViewById(equationIDs[i][numberOfVariables-1])
+                    coefficient.visibility = View.GONE
+                    val operator: TextView = findViewById(plusIDs[i])
+                    operator.visibility = View.GONE
+                    val variable: TextView = findViewById(zVariable[i])
+                    variable.visibility = View.GONE
+                }
+            }
+            R.id.buttonAddVar -> {
+                for(i in matrix.coefficients.indices) {
+                    val coefficient: TextView = findViewById(equationIDs[i][numberOfVariables-1])
+                    coefficient.visibility = View.VISIBLE
+                    val operator: TextView = findViewById(plusIDs[i])
+                    operator.visibility = View.VISIBLE
+                    val variable: TextView = findViewById(zVariable[i])
+                    variable.visibility = View.VISIBLE
+                }
+            }
+            R.id.buttonAddEqn -> {
+                for(element in row3) {
+                    val box: TextView = findViewById(element)
+                    box.visibility = View.VISIBLE
+                }
+            }
+            R.id.buttonSubEqn -> {
+                for(element in row3) {
+                    val box: TextView = findViewById(element)
+                    box.visibility = View.GONE
                 }
             }
         }

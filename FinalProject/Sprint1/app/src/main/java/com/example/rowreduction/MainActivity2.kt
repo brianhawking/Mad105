@@ -94,6 +94,11 @@ class MainActivity2 : AppCompatActivity() {
             resultContractForSwap.launch(intent)
         }
 
+        multByConstantButton.setOnClickListener {
+            val intent = Intent(this,MultiplyByConstantActivity::class.java)
+            startActivity(intent)
+        }
+
 
 //        val rational = matrix.coefficientsAsRationals[0][0] + matrix.coefficientsAsRationals[0][1]
 
