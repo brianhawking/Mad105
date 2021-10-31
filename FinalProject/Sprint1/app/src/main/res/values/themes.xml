@@ -2,8 +2,10 @@
     <!-- Base application theme. -->
     <style name="Theme.RowReduction" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+<!--        <item name="colorPrimary">@color/purple_500</item>-->
+        <item name="colorPrimary">@color/operationButtonColor</item>
+<!--        <item name="colorPrimaryVariant">@color/purple_700</item>-->
+        <item name="colorPrimaryVariant">@color/numberButtonColor</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -14,22 +16,4 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="NumberButton">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">35pt</item>
-        <item name="android:layout_weight">1</item>
-        <item name="background">@color/black</item>
-        <item name="android:textSize">10pt</item>
-        <item name="android:layout_margin">0.5pt</item>
-    </style>
-
-    <style name="EquationVariable">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">35pt</item>
-        <item name="android:layout_weight">1</item>
-        <item name="backgroundTint">@color/buttonColor</item>
-        <item name="android:textSize">10pt</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:layout_margin">0.5pt</item>
-    </style>
 </resources>

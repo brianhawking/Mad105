@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             val intent = Intent(this,MainActivity2::class.java)
-            intent.putExtra("number","5")
+            intent.putExtra("number","9")
             resultContract.launch(intent)
         }
 

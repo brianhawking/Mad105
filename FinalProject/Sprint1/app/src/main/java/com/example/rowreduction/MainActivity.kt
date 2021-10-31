@@ -6,11 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import kotlin.arrayOf as arrayOf1
+import android.widget.Toast
+import com.google.android.material.internal.ContextUtils.getActivity
+import java.lang.Float.parseFloat
+import java.util.ArrayList
+//import kotlin.arrayOf as arrayOf1
+import java.util.Arrays
 
 class MainActivity : AppCompatActivity() {
 
-    var buttonIDs = arrayOf1(
+    private var buttonIDs = arrayOf(
         R.id.button0,
         R.id.button1,
         R.id.button2,
@@ -30,20 +35,20 @@ class MainActivity : AppCompatActivity() {
         R.id.buttonFrac
     )
 
-    var equationIDs = arrayOf1(
-        arrayOf1(R.id.coefficientX1, R.id.coefficientY1,R.id.coefficientC1),
-        arrayOf1(R.id.coefficientX2, R.id.coefficientY2, R.id.coefficientC2)
+    private var equationIDs = arrayOf(
+        arrayOf(R.id.coefficientX1, R.id.coefficientY1,R.id.coefficientZ1, R.id.coefficientC1),
+        arrayOf(R.id.coefficientX2, R.id.coefficientY2, R.id.coefficientZ2, R.id.coefficientC2),
+        arrayOf(R.id.coefficientX3, R.id.coefficientY3, R.id.coefficientZ3, R.id.coefficientC3)
     )
 
-    var coefficients = arrayOf1(
-        arrayOf1("0", "0", "0"),
-        arrayOf1("0", "0", "0")
-    )
+    // variable containing all coefficients
+    var matrix = Matrix()
+
 
     var row = 0
     var column = 0
-    var numberOfEquations = 2
-    var numberOfVariables = 2
+    var numberOfEquations = 3
+    var numberOfVariables = 3
 
     lateinit var textViewResult: TextView
 
@@ -51,22 +56,23 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // current selected box
         textViewResult = findViewById(equationIDs[row][column])
 
-
+        // add listeners to all the buttons
         for(buttonID in buttonIDs) {
             val b: Button = findViewById(buttonID)
 
             b.setOnClickListener {
 
-                if (buttonID == R.id.buttonFrac) {
-                    val intent = Intent(this,MainActivity2::class.java)
-                    intent.putExtra("key",coefficients[row][column])
-                    intent.putExtra("Number",coefficients[row][column])
-                    
-                }
-                else if( (buttonID == R.id.buttonLeft) || (buttonID == R.id.buttonRight)) {
+                if( (buttonID == R.id.buttonLeft) || (buttonID == R.id.buttonRight)) {
                     moveBox(buttonID)
+                }
+                else if(buttonID == R.id.setupMatrix) {
+                     if (validate()) {
+                         // move to next screen
+                         setupAugmentedMatrix()
+                     }
                 }
                 else {
                     editNumber(buttonID)
@@ -75,11 +81,53 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun moveBox(direction: Int) {
+    fun setupAugmentedMatrix() {
 
-        textViewResult = findViewById(equationIDs[row][column])
-        textViewResult.setBackgroundColor(Color.TRANSPARENT)
+        val intent = Intent(this,MainActivity2::class.java)
 
+        // set data up to send to next activity
+        for(i in matrix.coefficients[0].indices) {
+//            println(matrix.coefficients[0][i])
+        }
+        intent.putExtra("coefficients1", matrix.coefficients[0])
+        intent.putExtra("coefficients2", matrix.coefficients[1])
+        intent.putExtra("coefficients3", matrix.coefficients[2])
+
+        startActivity(intent)
+    }
+
+    // make sure the number is valid
+    private fun validate() : Boolean {
+
+        // search through coefficients. make sure they're all valid numbers
+        // if they're all numbers, convert to Rational
+        for(i in matrix.coefficients.indices) {
+            for (j in matrix.coefficients[i].indices) {
+
+                // if the string to rational returns false, return false for validate
+                if (!matrix.stringToRational(i,j)) {
+                    Toast.makeText(
+                        this,
+                        "One of your coefficients is invalid.",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    return false
+                }
+            }
+        }
+        return true
+    }
+
+    private fun moveBox(direction: Int) : Boolean {
+
+        if(!validate()) {
+            println("SOMETHING WENT WRONG")
+            return false
+        }
+        else {
+            textViewResult = findViewById(equationIDs[row][column])
+            textViewResult.setBackgroundColor(Color.TRANSPARENT)
+        }
 
         when (direction) {
             R.id.buttonLeft -> {
@@ -91,7 +139,7 @@ class MainActivity : AppCompatActivity() {
                     column = numberOfVariables
 
                     if(row < 0) {
-                        row = 0
+                        row = (numberOfEquations-1)
                     }
                 }
             }
@@ -115,87 +163,109 @@ class MainActivity : AppCompatActivity() {
 
         textViewResult = findViewById(equationIDs[row][column])
         textViewResult.setBackgroundResource(R.drawable.my_border)
+
+        return true
     }
 
-    fun editNumber(id: Int) {
+    private fun editNumber(id: Int) {
 
 
-        if(coefficients[row][column] == "0") {
-            coefficients[row][column] = ""
+        if(matrix.coefficients[row][column] == "0") {
+            matrix.coefficients[row][column] = ""
         }
 
         val tempResult: String
 
         when (id) {
             R.id.button0 -> {
-                if(coefficients[row][column] == "0") {
+                // don't add a 0 if the number is already 0
+                if(matrix.coefficients[row][column] == "0") {
                     return
                 }
-                if( (coefficients[row][column].contains(".", false)) && (coefficients[row][column].last() == '0')) {
+                // don't add a zero if the decimal already ends in a 0
+                if( (matrix.coefficients[row][column].contains(".", false)) && (matrix.coefficients[row][column].last() == '0')) {
                     return
                 }
-                coefficients[row][column] += "0"
+                matrix.coefficients[row][column] += "0"
             }
             R.id.button1 -> {
-                coefficients[row][column] += "1"
+                matrix.coefficients[row][column] += "1"
             }
             R.id.button2 -> {
-                coefficients[row][column] += "2"
+                matrix.coefficients[row][column] += "2"
             }
             R.id.button3 -> {
-                coefficients[row][column] += "3"
+                matrix.coefficients[row][column] += "3"
             }
             R.id.button4 -> {
-                coefficients[row][column] += "4"
+                matrix.coefficients[row][column] += "4"
             }
             R.id.button5 -> {
-                coefficients[row][column] += "5"
+                matrix.coefficients[row][column] += "5"
             }
             R.id.button6 -> {
-                coefficients[row][column] += "6"
+                matrix.coefficients[row][column] += "6"
             }
             R.id.button7 -> {
-                coefficients[row][column] += "7"
+                matrix.coefficients[row][column] += "7"
             }
             R.id.button8 -> {
-                coefficients[row][column] += "8"
+                matrix.coefficients[row][column] += "8"
             }
             R.id.button9 -> {
-                coefficients[row][column] += "9"
+                matrix.coefficients[row][column] += "9"
             }
             R.id.buttonDEL -> {
 
-                tempResult = coefficients[row][column].dropLast(1)
-                coefficients[row][column] = tempResult
+                tempResult = matrix.coefficients[row][column].dropLast(1)
+                matrix.coefficients[row][column] = tempResult
 
-                if(coefficients[row][column] == "") {
-                    coefficients[row][column] = "0"
+                if(matrix.coefficients[row][column] == "") {
+                    matrix.coefficients[row][column] = "0"
                 }
             }
             R.id.buttonPlusMinus -> {
-                if(coefficients[row][column].contains("-", true)) {
+                if(matrix.coefficients[row][column].contains("-", true)) {
                     // remove -
-                    tempResult = coefficients[row][column].drop(1)
-                    coefficients[row][column] = tempResult
+                    tempResult = matrix.coefficients[row][column].drop(1)
+                    matrix.coefficients[row][column] = tempResult
                 }
                 else {
-                    val temp = coefficients[row][column]
-                    coefficients[row][column] = "-$temp"
+                    val temp = matrix.coefficients[row][column]
+                    matrix.coefficients[row][column] = "-$temp"
                 }
 
-                if(coefficients[row][column] == "-") {
-                    coefficients[row][column] = "0"
+                if(matrix.coefficients[row][column] == "-") {
+                    matrix.coefficients[row][column] = "0"
                 }
             }
             R.id.buttonDot -> {
-                println("pressing dot")
-                if(coefficients[row][column].contains(".")) {
+
+                if(matrix.coefficients[row][column].contains(".")) {
                     return
                 }
-                coefficients[row][column] += "."
 
-                if(coefficients[row][column] == ".") {
-                    coefficients[row][column] = "0."
+                if(matrix.coefficients[row][column].contains("/")){
+                    return
+                }
+
+                matrix.coefficients[row][column] += "."
+
+                if(matrix.coefficients[row][column] == ".") {
+                    matrix.coefficients[row][column] = "0."
+                }
+            }
+            R.id.buttonFrac -> {
+
+                // don't add a fraction if it has a / or decimal.
+                if (matrix.coefficients[row][column].contains("/") || matrix.coefficients[row][column].contains(".") ) {
+                    return
+                }
+                matrix.coefficients[row][column] += "/"
+
+                // don't show / if it's the only text shown
+                if(matrix.coefficients[row][column] == "/") {
+                   matrix.coefficients[row][column] = "0"
                 }
             }
             else -> {
@@ -203,9 +273,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        println(coefficients[row][column])
+        //println(coefficients[row][column])
         textViewResult = findViewById(equationIDs[row][column])
-        textViewResult.text = coefficients[row][column]
+        textViewResult.text = matrix.coefficients[row][column]
     }
 
 }

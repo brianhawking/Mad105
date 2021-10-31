@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/backgroundColor"
     tools:context=".MainActivity">
 
 
@@ -18,154 +18,165 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             >
 
             <TextView
+                style="@style/Coefficient"
                 android:id="@+id/coefficientX1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/coefficientX1"
-                android:textSize="24sp"
-                android:gravity="center"
                 android:background="@drawable/my_border"/>
 
             <TextView
+                style="@style/Variable"
                 android:id="@+id/equation1X"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="x"
-                android:textSize="24sp" />
+                android:text="@string/XVariable" />
 
             <TextView
-                android:id="@+id/equation1Plus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="+"
-                android:textSize="24sp" />
+                style="@style/Operator"
+                android:id="@+id/equation11Plus"
+                android:text="@string/Plus" />
 
             <TextView
-                android:id="@+id/coefficientY1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textSize="24sp" />
+                style="@style/Coefficient"
+                android:id="@+id/coefficientY1" />
 
             <TextView
+                style="@style/Variable"
                 android:id="@+id/equation1Y"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="y"
-                android:textSize="24sp" />
+                android:text="@string/YVariable"/>
 
             <TextView
+                style="@style/Operator"
+                android:id="@+id/equation12Plus"
+                android:text="@string/Plus" />
+
+            <TextView
+                style="@style/Coefficient"
+                android:id="@+id/coefficientZ1" />
+
+            <TextView
+                style="@style/Variable"
+                android:id="@+id/equation1Z"
+                android:text="@string/ZVariable" />
+
+            <TextView
+                style="@style/Operator"
                 android:id="@+id/equation1Equals"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="="
-                android:textSize="24sp" />
+                android:text="@string/Equals" />
 
             <TextView
-                android:id="@+id/coefficientC1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textSize="24sp" />
+                style="@style/Coefficient"
+                android:id="@+id/coefficientC1"/>
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-
-            android:gravity="center_vertical"
-            android:orientation="vertical">
+>
 
             <TextView
+                style="@style/Coefficient"
                 android:id="@+id/coefficientX2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
                 android:textSize="24sp" />
 
             <TextView
+                style="@style/Variable"
                 android:id="@+id/equation2X"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="x"
-                android:textSize="24sp" />
+                android:text="@string/XVariable" />
 
             <TextView
-                android:id="@+id/equation2Plus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="+"
-                android:textSize="24sp" />
+                style="@style/Operator"
+                android:id="@+id/equation21Plus"
+                android:text="@string/Plus" />
 
             <TextView
-                android:id="@+id/coefficientY2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textSize="24sp" />
+                style="@style/Coefficient"
+                android:id="@+id/coefficientY2"/>
 
             <TextView
+                style="@style/Variable"
                 android:id="@+id/equation2Y"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:text="y"
+                android:text="@string/YVariable"/>
+
+            <TextView
+                style="@style/Operator"
+                android:id="@+id/equation22Plus"
+                android:text="@string/Plus"/>
+
+            <TextView
+                style="@style/Coefficient"
+                android:id="@+id/coefficientZ2"
                 android:textSize="24sp" />
 
             <TextView
+                style="@style/Variable"
+                android:id="@+id/equation2Z"
+                android:text="@string/ZVariable" />
+
+            <TextView
+                style="@style/Operator"
                 android:id="@+id/equation2Equals"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="="
-                android:textSize="24sp" />
+                android:text="@string/Equals" />
 
             <TextView
-                android:id="@+id/coefficientC2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textSize="24sp" />
+                style="@style/Coefficient"
+                android:id="@+id/coefficientC2"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/Coefficient"
+                android:id="@+id/coefficientX3" />
+
+            <TextView
+                style="@style/Variable"
+                android:id="@+id/equation3X"
+                android:text="@string/XVariable"/>
+
+            <TextView
+                style="@style/Operator"
+                android:id="@+id/equation31Plus"
+                android:text="@string/Plus" />
+
+            <TextView
+                style="@style/Coefficient"
+                android:id="@+id/coefficientY3" />
+
+            <TextView
+                style="@style/Variable"
+                android:id="@+id/equation3Y"
+                android:text="@string/YVariable" />
+
+            <TextView
+                style="@style/Operator"
+                android:id="@+id/equation32Plus"
+                android:text="@string/Plus" />
+
+            <TextView
+                style="@style/Coefficient"
+                android:id="@+id/coefficientZ3" />
+
+            <TextView
+                style="@style/Variable"
+                android:id="@+id/equation3Z"
+                android:text="@string/ZVariable" />
+
+            <TextView
+                style="@style/Operator"
+                android:id="@+id/equation3Equals"
+                android:text="@string/Equals" />
+
+            <TextView
+                style="@style/Coefficient"
+                android:id="@+id/coefficientC3" />
         </TableRow>
 
     </TableLayout>
-
-<!--    <TextView-->
-<!--        android:id="@+id/result"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_weight="1"-->
-<!--        android:ems="10"-->
-<!--        android:text="0"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="40pt"-->
-<!--        android:gravity="right|center"-->
-<!--        />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -180,9 +191,26 @@
             android:layout_width="wrap_content"
             android:layout_height="30pt"
             android:layout_weight="0.5"
-            android:text="Setup Augmented Matrix" />
+            android:text="@string/SetupMatrixButton" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+
+        android:layout_width="0dp"
+        android:layout_height="10pt"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:background="@color/black"
+        android:textSize="24sp" />
+
+    </LinearLayout>
+
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -198,29 +226,29 @@
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/button7"
-                android:text="7"
+                android:text="@string/_7"
                 />
 
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/button8"
-                android:text="8"
+                android:text="@string/_8"
                 />
 
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/button9"
-                android:text="9"
+                android:text="@string/_9"
                 />
 
             <Button
-                style="@style/NumberButton"
+                style="@style/EquationVariable"
                 android:id="@+id/buttonDEL"
-                android:text="DEL"
+                android:text="@string/del"
                 />
 
             <Button
-                style="@style/NumberButton"
+                style="@style/EquationVariable"
                 android:id="@+id/buttonLeft"
                 android:text="L"
                 />
@@ -235,29 +263,29 @@
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/button4"
-                android:text="4"
+                android:text="@string/_4"
                 />
 
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/button5"
-                android:text="5"
+                android:text="@string/_5"
                 />
 
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/button6"
-                android:text="6"
+                android:text="@string/_6"
                 />
 
             <Button
-                style="@style/NumberButton"
+                style="@style/EquationVariable"
                 android:id="@+id/buttonPlusMinus"
-                android:text="+/-"
+                android:text="@string/PlusMinus"
                 />
 
             <Button
-                style="@style/NumberButton"
+                style="@style/EquationVariable"
                 android:id="@+id/buttonRight"
                 android:text="R"
                 />
@@ -272,19 +300,19 @@
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/button1"
-                android:text="1"
+                android:text="@string/_1"
                 />
 
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/button2"
-                android:text="2"
+                android:text="@string/_2"
                 />
 
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/button3"
-                android:text="3"
+                android:text="@string/_3"
                 />
 
             <Button
@@ -315,7 +343,7 @@
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/button0"
-                android:text="0"
+                android:text="@string/_0"
                 />
 
             <Button
@@ -325,13 +353,13 @@
                 />
 
             <Button
-                style="@style/NumberButton"
+                style="@style/EquationVariable"
                 android:id="@+id/buttonSubEqn"
                 android:text="-E"
                 />
 
             <Button
-                style="@style/NumberButton"
+                style="@style/EquationVariable"
                 android:id="@+id/buttonSubVar"
                 android:text="-V"
                 />

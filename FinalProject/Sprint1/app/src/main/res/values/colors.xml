@@ -10,5 +10,7 @@
 
 
     <color name="backgroundColor">#FFC0CAAD</color>
-    <color name="buttonColor">#FF654C4F</color>
+    <color name="actionButtonColor">#FF654C4F</color>
+    <color name="numberButtonColor">#FFB26E63</color>
+    <color name="operationButtonColor">#FF654C4F</color>
 </resources>
