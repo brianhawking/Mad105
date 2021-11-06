@@ -24,9 +24,14 @@ class SwapRows : AppCompatActivity() {
 
     var swap = intArrayOf(0,0)
 
+    var numberOfEquations = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_swap_rows)
+
+        val bundle: Bundle? = intent.extras
+        numberOfEquations = bundle?.getInt("numberOfEquations")!!
 
         // hide initial rows
         var firstImageView: ImageView = findViewById(R.id.firstRowImage)
@@ -35,11 +40,16 @@ class SwapRows : AppCompatActivity() {
         secondImageView.visibility = View.INVISIBLE
 
         // set up listeners for row buttons
-        for(buttonID in buttonIDs) {
-            val b: Button = findViewById(buttonID)
+        for(i in buttonIDs.indices) {
 
+            val b: Button = findViewById(buttonIDs[i])
             b.setOnClickListener {
-                rowChosen(buttonID)
+                rowChosen(buttonIDs[i])
+            }
+
+            if(numberOfEquations == 2) {
+                val b: Button = findViewById(buttonIDs[2])
+                b.visibility = View.GONE
             }
         }
 

@@ -46,39 +46,36 @@ class MainActivity : AppCompatActivity() {
         arrayOf(R.id.coefficientX3, R.id.coefficientY3, R.id.coefficientZ3, R.id.coefficientC3)
     )
 
-    var plusIDs = arrayOf(
-        R.id.equation12Plus,
-        R.id.equation22Plus,
-        R.id.equation32Plus
-    )
-
-    var zVariable = arrayOf(
+    var column3IDs = arrayOf(
         R.id.equation1Z,
         R.id.equation2Z,
-        R.id.equation3Z
+        R.id.equation3Z,
+        R.id.equation12Plus,
+        R.id.equation22Plus,
+        R.id.equation32Plus,
+        R.id.coefficientZ3,
+        R.id.coefficientZ2,
+        R.id.coefficientZ1
     )
 
-    var row3 = arrayOf(
+    var row3IDs = arrayOf(
         R.id.coefficientX3,
         R.id.coefficientY3,
         R.id.coefficientZ3,
         R.id.coefficientC3,
         R.id.equation3X,
         R.id.equation31Plus,
-        
         R.id.equation3Y,
         R.id.equation32Plus,
-
         R.id.equation3Z,
         R.id.equation3Equals,
-
     )
-
 
     // variable containing all coefficients
     var matrix = Matrix()
 
 
+    // keep track of position
     var row = 0
     var column = 0
     var numberOfEquations = 3
@@ -99,9 +96,11 @@ class MainActivity : AppCompatActivity() {
 
             b.setOnClickListener {
 
+                // user selects to move
                 if( (buttonID == R.id.buttonLeft) || (buttonID == R.id.buttonRight)) {
                     moveBox(buttonID)
                 }
+                // user wants to change size of system
                 else if(buttonID == R.id.buttonSubVar || buttonID == R.id.buttonAddVar || buttonID == R.id.buttonAddEqn || buttonID == R.id.buttonSubEqn) {
                     changeSize(buttonID)
                 }
@@ -120,54 +119,84 @@ class MainActivity : AppCompatActivity() {
 
     fun changeSize(id: Int) {
 
+        // which size adjustement did they make
         when (id) {
             R.id.buttonSubVar -> {
-                println("SUBTRACT")
-                for(i in matrix.coefficients.indices) {
-                    val coefficient: TextView = findViewById(equationIDs[i][numberOfVariables-1])
-                    coefficient.visibility = View.GONE
-                    val operator: TextView = findViewById(plusIDs[i])
-                    operator.visibility = View.GONE
-                    val variable: TextView = findViewById(zVariable[i])
-                    variable.visibility = View.GONE
-                }
-            }
-            R.id.buttonAddVar -> {
-                for(i in matrix.coefficients.indices) {
-                    val coefficient: TextView = findViewById(equationIDs[i][numberOfVariables-1])
-                    coefficient.visibility = View.VISIBLE
-                    val operator: TextView = findViewById(plusIDs[i])
-                    operator.visibility = View.VISIBLE
-                    val variable: TextView = findViewById(zVariable[i])
-                    variable.visibility = View.VISIBLE
-                }
-            }
-            R.id.buttonAddEqn -> {
-                for(element in row3) {
-                    val box: TextView = findViewById(element)
-                    box.visibility = View.VISIBLE
-                }
-            }
-            R.id.buttonSubEqn -> {
-                for(element in row3) {
+
+                // remove the 3rd variable column
+                for (element in column3IDs) {
                     val box: TextView = findViewById(element)
                     box.visibility = View.GONE
                 }
+                numberOfVariables -= 1
+
+                if (numberOfVariables == 3) {
+                    numberOfVariables = 2
+                }
+
+            }
+            // add the third variable column
+            R.id.buttonAddVar -> {
+                for (element in column3IDs) {
+                    val box: TextView = findViewById(element)
+                    box.visibility = View.VISIBLE
+                }
+                if (numberOfEquations == 2) {
+                    for (element in row3IDs) {
+                        val box: TextView = findViewById(element)
+                        box.visibility = View.GONE
+                    }
+                }
+
+                if (numberOfVariables == 2) {
+                    numberOfVariables = 3
+                }
+            }
+            // add 3rd equation
+            R.id.buttonAddEqn -> {
+                for(element in row3IDs) {
+                    val box: TextView = findViewById(element)
+                    box.visibility = View.VISIBLE
+                }
+                if (numberOfVariables == 2) {
+                    // hide column 3
+                    for (element in column3IDs) {
+                        val box: TextView = findViewById(element)
+                        box.visibility = View.GONE
+                    }
+                }
+
+                if (numberOfEquations == 2) {
+                    numberOfEquations = 3
+                }
+            }
+            // remove 3rd equation
+            R.id.buttonSubEqn -> {
+                for(element in row3IDs) {
+                    val box: TextView = findViewById(element)
+                    box.visibility = View.GONE
+                }
+
+                if(numberOfEquations == 3) {
+                    numberOfEquations -= 1
+                }
             }
         }
+
+
     }
 
     fun setupAugmentedMatrix() {
 
+        // set up transition to next activity
         val intent = Intent(this,MainActivity2::class.java)
 
         // set data up to send to next activity
-        for(i in matrix.coefficients[0].indices) {
-//            println(matrix.coefficients[0][i])
-        }
         intent.putExtra("coefficients1", matrix.coefficients[0])
         intent.putExtra("coefficients2", matrix.coefficients[1])
         intent.putExtra("coefficients3", matrix.coefficients[2])
+        intent.putExtra("numberOfEquations", numberOfEquations)
+        intent.putExtra("numberOfVariables", numberOfVariables)
 
         startActivity(intent)
     }
@@ -197,7 +226,7 @@ class MainActivity : AppCompatActivity() {
     private fun moveBox(direction: Int) : Boolean {
 
         if(!validate()) {
-            println("SOMETHING WENT WRONG")
+            println("Your number is invalid.")
             return false
         }
         else {
@@ -210,9 +239,13 @@ class MainActivity : AppCompatActivity() {
                 // move left
                 column -= 1
 
+                if(numberOfVariables == 2 && column == 2) {
+                    column -= 1
+                }
+
                 if(column < 0) {
                     row -= 1
-                    column = numberOfVariables
+                    column = 3
 
                     if(row < 0) {
                         row = (numberOfEquations-1)
@@ -223,7 +256,11 @@ class MainActivity : AppCompatActivity() {
                 // move right
                 column += 1
 
-                if(column > numberOfVariables) {
+                if(numberOfVariables == 2 && column == 2) {
+                    column += 1
+                }
+
+                if(column > 3) {
                     row += 1
                     column = 0
 

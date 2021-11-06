@@ -24,6 +24,24 @@ import android.widget.Spinner
 import android.widget.TextView
 import java.text.DecimalFormat
 
+/**
+ * Class - MainActivity
+ * @author - Brian Veitch
+ * @date - 10/23
+
+ * @description
+ * Calculates the tip based on the total and tip percentage
+
+ * @param
+ * cost - cost of meal
+ * tipPercentage - percentage used to calculate tip
+ * tip - calculated tip
+ * result - dispaly tip and the overall total cost
+ *
+ * mods
+ * BV
+ */
+
 class MainActivity : AppCompatActivity() {
 
     var cost: Double = 0.0

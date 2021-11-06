@@ -10,13 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RowReduction">
         <activity
+            android:name=".Hint"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
+        <activity
+            android:name=".RowPlusConstantRow"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
+        <activity
             android:name=".MultiplyByConstantActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
             android:name=".SwapRows"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
             android:name=".MainActivity2"
             android:exported="false" />

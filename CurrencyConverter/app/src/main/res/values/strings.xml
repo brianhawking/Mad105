@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Currency Converter</string>
+    <string name="editTextCurrency">Currency to Convert</string>
+    <string name="toDollars">Euros to Dollars</string>
+    <string name="toEuros">Dollars To Euros</string>
+</resources>

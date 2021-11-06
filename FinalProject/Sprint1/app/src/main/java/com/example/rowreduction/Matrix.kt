@@ -1,6 +1,5 @@
 package com.example.rowreduction
 
-import android.widget.Toast
 import java.lang.Float
 
 class Matrix {
@@ -16,6 +15,18 @@ class Matrix {
         arrayOf(Rational(0,1),Rational(0,1),Rational(0,1),Rational(0,1) ),
         arrayOf(Rational(0,1),Rational(0,1),Rational(0,1),Rational(0,1) )
     )
+
+    fun copy() : Matrix {
+        var temp = Matrix()
+        for(row in coefficientsAsRationals.indices) {
+            for (column in coefficientsAsRationals[row].indices) {
+                temp.coefficientsAsRationals[row][column] = this.coefficientsAsRationals[row][column]
+                temp.coefficients[row][column] = this.coefficients[row][column]
+            }
+        }
+
+        return temp
+    }
 
     fun stringToRational(i: Int, j: Int) : Boolean {
 
@@ -77,13 +88,43 @@ class Matrix {
         val i = rowI - 1
         val j = rowJ - 1
 
-        for (column in this.coefficients[i].indices) {
+        // swap rows i and j
+        // then convert rationals to strings
+        for (column in coefficientsAsRationals[i].indices) {
             // store i row in tempRow
-            val temp = this.coefficients[i][column]
-            this.coefficients[i][column] = this.coefficients[j][column]
-            this.coefficients[j][column] = temp
-            this.stringToRational(i,column)
-            this.stringToRational(j,column)
+            val temp = this.coefficientsAsRationals[i][column]
+            this.coefficientsAsRationals[i][column] = this.coefficientsAsRationals[j][column]
+            this.coefficientsAsRationals[j][column] = temp
+            this.coefficients[i][column] = this.coefficientsAsRationals[i][column].toString()
+            this.coefficients[j][column] = this.coefficientsAsRationals[j][column].toString()
+        }
+    }
+
+    fun multiplyRowByConstant(row: Int, constant: String) {
+
+        var rational = Rational(0,1)
+
+        if (rational.isRational(constant)) {
+            rational = rational.stringToRational(constant)
+            for (column in coefficientsAsRationals[row-1].indices) {
+                val temp = coefficientsAsRationals[row-1][column] * rational
+                this.coefficientsAsRationals[row-1][column] = temp
+                this.coefficients[row-1][column] = this.coefficientsAsRationals[row-1][column].toString()
+            }
+        }
+    }
+
+    fun rowPlusConstantRow(finalRow: Int, constant: String, pivotRow: Int) {
+
+        var rational = Rational(0,1)
+
+        if(rational.isRational(constant)) {
+            rational = rational.stringToRational(constant)
+            for (column in coefficientsAsRationals[finalRow-1].indices) {
+                val temp = coefficientsAsRationals[finalRow-1][column] + (rational * coefficientsAsRationals[pivotRow-1][column])
+                this.coefficientsAsRationals[finalRow-1][column] = temp
+                this.coefficients[finalRow-1][column] = this.coefficientsAsRationals[finalRow-1][column].toString()
+            }
         }
     }
 

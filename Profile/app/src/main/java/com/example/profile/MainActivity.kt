@@ -18,6 +18,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 
+/**
+ * Class - MainActivity1
+ * @author - Brian Veitch
+ * date - 10/16
+ * @param
+ * None
+ * @description
+ * Display user and button to view profile
+ *
+ * mods
+ * BV
+ */
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

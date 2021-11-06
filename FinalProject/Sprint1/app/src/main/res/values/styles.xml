@@ -36,7 +36,7 @@
 
     <style name="NumberButton">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">35pt</item>
+        <item name="android:layout_height">30pt</item>
         <item name="android:layout_weight">1</item>
         <item name="backgroundTint">@color/numberButtonColor</item>
         <item name="android:textColor">@color/white</item>
@@ -46,7 +46,7 @@
 
     <style name="EquationVariable">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">35pt</item>
+        <item name="android:layout_height">30pt</item>
         <item name="android:layout_weight">1</item>
         <item name="backgroundTint">@color/actionButtonColor</item>
         <item name="android:textSize">10pt</item>
