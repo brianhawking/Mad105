@@ -30,8 +30,8 @@ import java.text.DecimalFormat
 class MainActivity : AppCompatActivity() {
 
 
-    // google's exchange rate as of 11/6/2021 12pm
-    private val euroToDollarConversion: Double = 1.16
+    // exchange rate as of 11/7/2021 10am
+    private val euroToDollarConversion: Double = 1.156268
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,11 +65,20 @@ class MainActivity : AppCompatActivity() {
                     // convert to euro
                     resultCurrency = currencyToConvert / euroToDollarConversion
                     resultTextView.text = "\u20ac" + currencyFormatter.format(resultCurrency)
+
+                    // check if they have over $10,000 (dollars)
+                    if (currencyToConvert > 10000.00) {
+                        Toast.makeText(this@MainActivity, "You are converting over $10,000 to Euros!", Toast.LENGTH_LONG).show()
+                    }
                 }
                 else if (euroToDollar.isChecked) {
                     // convert tto dollar
                     resultCurrency = currencyToConvert * euroToDollarConversion
                     resultTextView.text = "$" + currencyFormatter.format(resultCurrency)
+                    // check if they are converting to over $10000 (dollars)
+                    if (resultCurrency!! > 10000.00) {
+                        Toast.makeText(this@MainActivity, "You are converting to over $10,000", Toast.LENGTH_LONG).show()
+                    }
                 }
                 else {
                     // something's wrong
