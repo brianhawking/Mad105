@@ -34,11 +34,6 @@ class MultiplyByConstantActivity : AppCompatActivity() {
         R.id.row3Button
     )
 
-    private var doneButtonIDs = arrayOf(
-        R.id.buttonCancel,
-        R.id.buttonMultiply
-    )
-
     var row = 1
     var constant = ""
 
@@ -51,7 +46,7 @@ class MultiplyByConstantActivity : AppCompatActivity() {
         val bundle: Bundle? = intent.extras
         numberOfEquations = bundle?.getInt("numberOfEquations")!!
 
-        // hide row 3, if neccesssary
+        // hide row 3, if necessary
         if(numberOfEquations == 2) {
             val row: Button = findViewById(R.id.row3Button)
             row.visibility = View.GONE
@@ -71,7 +66,7 @@ class MultiplyByConstantActivity : AppCompatActivity() {
             // grab current button
             val b: Button = findViewById(buttonID)
 
-            // set up listenrs
+            // set up listeners
             b.setOnClickListener {
                 editNumber(buttonID)
             }
@@ -88,8 +83,8 @@ class MultiplyByConstantActivity : AppCompatActivity() {
             // set up the listeners
             rowButton.setOnClickListener {
                 
-                var initialRowImage: ImageView = findViewById(R.id.initialRow)
-                var finalRowImage: ImageView = findViewById(R.id.finalRow)
+                val initialRowImage: ImageView = findViewById(R.id.initialRow)
+                val finalRowImage: ImageView = findViewById(R.id.finalRow)
 
                 // change row image based on user input
                 when (element) {
@@ -130,7 +125,7 @@ class MultiplyByConstantActivity : AppCompatActivity() {
     private fun editNumber(id: Int) {
 
         // temp
-        var tempResult: String
+        val tempResult: String
 
         if(constant == "0") {
             constant = ""
@@ -246,18 +241,18 @@ class MultiplyByConstantActivity : AppCompatActivity() {
             return false
         }
 
-        var rational = Rational(0,1)
+        val rational = Rational(0,1)
+
         println("CHECKING IF $constant is rational")
-        if(!rational.isRational(constant)) {
+        return if(!rational.isRational(constant)) {
             Toast.makeText(
                 this,
                 "Your number is not valid.",
                 Toast.LENGTH_LONG
             ).show()
-            return false
-        }
-        else {
-            return true
+            false
+        } else {
+            true
         }
 
     }

@@ -1,7 +1,5 @@
 package com.example.rowreduction
 
-import java.lang.Float
-
 class Rational(var num: Long, var den: Long)  {
     override fun toString() : String {
 
@@ -17,7 +15,7 @@ class Rational(var num: Long, var den: Long)  {
         }
     }
 
-    fun reduce(): Rational {
+    private fun reduce(): Rational {
         var x = this.num
         var y = this.den
         val d = gcd(x,y)
@@ -26,13 +24,13 @@ class Rational(var num: Long, var den: Long)  {
         return Rational(x,y)
     }
 
-    fun gcd(a: Long, b: Long): Long {
+    private fun gcd(a: Long, b: Long): Long {
         return if (b == 0L) a else gcd(b, a % b)
     }
 
     fun isRational(number: String) : Boolean {
         
-        var rational = Rational(0,1)
+        val rational = Rational(0,1)
 
         if (number == "") {
             return false
@@ -49,8 +47,8 @@ class Rational(var num: Long, var den: Long)  {
 
             // check if the numerator and denominator are actual numbers
             return try {
-                val numerator = Float.parseFloat(numbers[0])
-                val denominator = Float.parseFloat(numbers[1])
+                val numerator = numbers[0].toFloat()
+                val denominator = numbers[1].toFloat()
                 rational.num = numerator.toLong()
                 rational.den = denominator.toLong()
                 true
@@ -93,7 +91,7 @@ class Rational(var num: Long, var den: Long)  {
 
     fun stringToRational(number: String) : Rational {
 
-        var rational = Rational(0,1)
+        val rational = Rational(0,1)
 
         if (number == "0") {
             rational.num = 0
@@ -105,15 +103,15 @@ class Rational(var num: Long, var den: Long)  {
             val numbers = number.split("/")
 
             // check if the numerator and denominator are actual numbers
-            return try {
-                val numerator = Float.parseFloat(numbers[0])
-                val denominator = Float.parseFloat(numbers[1])
+            return return try {
+                val numerator = numbers[0].toFloat()
+                val denominator = numbers[1].toFloat()
                 rational.num = numerator.toLong()
                 rational.den = denominator.toLong()
-                return Rational(rational.num,rational.den)
+                Rational(rational.num,rational.den)
             } catch (e: NumberFormatException) {
                 println(e)
-                return Rational(0,1)
+                Rational(0,1)
             }
         }
 

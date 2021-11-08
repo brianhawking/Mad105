@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
 
 class SwapRows : AppCompatActivity() {
@@ -34,23 +33,21 @@ class SwapRows : AppCompatActivity() {
         numberOfEquations = bundle?.getInt("numberOfEquations")!!
 
         // hide initial rows
-        var firstImageView: ImageView = findViewById(R.id.firstRowImage)
-        var secondImageView: ImageView = findViewById(R.id.secondRowImage)
+        val firstImageView: ImageView = findViewById(R.id.firstRowImage)
+        val secondImageView: ImageView = findViewById(R.id.secondRowImage)
         firstImageView.visibility = View.INVISIBLE
         secondImageView.visibility = View.INVISIBLE
 
         // set up listeners for row buttons
         for(i in buttonIDs.indices) {
-
             val b: Button = findViewById(buttonIDs[i])
             b.setOnClickListener {
                 rowChosen(buttonIDs[i])
             }
-
-            if(numberOfEquations == 2) {
-                val b: Button = findViewById(buttonIDs[2])
-                b.visibility = View.GONE
-            }
+        }
+        if(numberOfEquations == 2) {
+            val b: Button = findViewById(buttonIDs[2])
+            b.visibility = View.GONE
         }
 
         val cancelButton: Button = findViewById(R.id.cancelSwap)
@@ -76,7 +73,7 @@ class SwapRows : AppCompatActivity() {
                     return
                 }
 
-            var array = intArrayOf(0,0)
+            val array = intArrayOf(0,0)
             for(i in swap.indices) {
                 when (swap[i]) {
                     R.id.row1Button -> array[i] = 1

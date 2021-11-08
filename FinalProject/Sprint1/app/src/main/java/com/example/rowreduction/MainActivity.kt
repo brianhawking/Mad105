@@ -8,11 +8,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.google.android.material.internal.ContextUtils.getActivity
-import java.lang.Float.parseFloat
-import java.util.ArrayList
-//import kotlin.arrayOf as arrayOf1
-import java.util.Arrays
 
 class MainActivity : AppCompatActivity() {
 
@@ -119,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
     fun changeSize(id: Int) {
 
-        // which size adjustement did they make
+        // which size adjustment did they make
         when (id) {
             R.id.buttonSubVar -> {
 

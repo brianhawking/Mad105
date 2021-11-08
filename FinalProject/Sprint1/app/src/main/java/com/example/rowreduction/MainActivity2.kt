@@ -8,8 +8,6 @@ import android.view.View
 import android.widget.*
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import java.util.*
-import java.util.Arrays.toString
 
 class MainActivity2 : AppCompatActivity() {
 
@@ -30,7 +28,7 @@ class MainActivity2 : AppCompatActivity() {
                 add new matrix to matrices array
                 copy new matrix back
                  */
-                var tempMatrix = matrix.copy()
+                val tempMatrix = matrix.copy()
                 tempMatrix.swapRows(rows[0],rows[1])
                 addMatrixToMatrices(tempMatrix)
                 matrix = tempMatrix.copy()
@@ -60,7 +58,7 @@ class MainActivity2 : AppCompatActivity() {
                     add new matrix to matrices array
                     copy new matrix back
                      */
-                    var tempMatrix = matrix.copy()
+                    val tempMatrix = matrix.copy()
                     tempMatrix.multiplyRowByConstant(row,constant)
                     addMatrixToMatrices(tempMatrix)
                     matrix = tempMatrix.copy()
@@ -91,7 +89,7 @@ class MainActivity2 : AppCompatActivity() {
                 add new matrix to matrices array
                 copy new matrix back
                  */
-                var tempMatrix = matrix.copy()
+                val tempMatrix = matrix.copy()
                 tempMatrix.rowPlusConstantRow(finalRow, constant, pivotRow)
                 addMatrixToMatrices(tempMatrix)
                 matrix = tempMatrix.copy()
@@ -113,11 +111,11 @@ class MainActivity2 : AppCompatActivity() {
     var matrices: Array<Matrix> = emptyArray()
 
     var row = 0
-    var column = 0
+//    var column = 0
     var numberOfEquations: Int = 0
     var numberOfVariables: Int = 0
 
-    lateinit var textViewResult: TextView
+//    lateinit var textViewResult: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,7 +127,7 @@ class MainActivity2 : AppCompatActivity() {
         val coefficients2 = bundle?.getStringArray("coefficients2")
         val coefficients3 = bundle?.getStringArray("coefficients3")
         numberOfEquations = bundle?.getInt("numberOfEquations")!!
-        numberOfVariables = bundle?.getInt("numberOfVariables")
+        numberOfVariables = bundle.getInt("numberOfVariables")
 
         // get data from bundle. Store it in the matrix as string and rational
         for (i in matrix.coefficients.indices) {
@@ -201,17 +199,17 @@ class MainActivity2 : AppCompatActivity() {
     fun addMatrixToMatrices(tempMatrix: Matrix) {
 
         // convert to mutable list so I can add a new element to array
-        var mutuableMatrices = matrices.toMutableList()
-        mutuableMatrices.add(tempMatrix)
-        matrices = mutuableMatrices.toTypedArray()
+        val mutableMatrices = matrices.toMutableList()
+        mutableMatrices.add(tempMatrix)
+        matrices = mutableMatrices.toTypedArray()
     }
 
     fun removeMatrixFromMatrices() {
 
         // delete last matrix from matrices
-        val mutuableMatrices = matrices.toMutableList()
-        mutuableMatrices.removeAt(matrices.size-1)
-        matrices = mutuableMatrices.toTypedArray()
+        val mutableMatrices = matrices.toMutableList()
+        mutableMatrices.removeAt(matrices.size-1)
+        matrices = mutableMatrices.toTypedArray()
         matrix = matrices.last()
 
         updateScreen()
@@ -221,7 +219,7 @@ class MainActivity2 : AppCompatActivity() {
     fun printMatrix(tempMatrix: Matrix) {
         for(row in tempMatrix.coefficients.indices) {
             for(column in tempMatrix.coefficientsAsRationals[row].indices) {
-                print("${tempMatrix.coefficientsAsRationals[row][column].toString()} ")
+                print("${tempMatrix.coefficientsAsRationals[row][column]}")
             }
             print("\n")
         }

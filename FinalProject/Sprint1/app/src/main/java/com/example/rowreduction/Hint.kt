@@ -16,8 +16,8 @@ class Hint : AppCompatActivity() {
     var pivotRow = 0
     var pivotColumn = 0
 
-    val ZERO = Rational(0,1)
-    val ONE = Rational(1,1)
+    private val cZERO = Rational(0,1)
+    private val cONE = Rational(1,1)
 
     var hintViews = arrayOf(
         R.id.swapRowsHint,
@@ -29,6 +29,18 @@ class Hint : AppCompatActivity() {
         R.drawable.r1,
         R.drawable.r2,
         R.drawable.r3
+    )
+
+    var rows = arrayOf(
+        arrayOf(R.id.coefficientX1, R.id.coefficientY1, R.id.coefficientZ1, R.id.coefficientC1),
+        arrayOf(R.id.coefficientX2, R.id.coefficientY2, R.id.coefficientZ2, R.id.coefficientC2),
+        arrayOf(R.id.coefficientX3, R.id.coefficientY3, R.id.coefficientZ3, R.id.coefficientC3)
+    )
+
+    var solutions = arrayOf(
+        arrayOf("x", ""),
+        arrayOf("y", ""),
+        arrayOf("z", "")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,7 +85,7 @@ class Hint : AppCompatActivity() {
 
     fun findPivot() {
 
-        println("Row $pivotRow, Column $pivotColumn")
+        //println("Row $pivotRow, Column $pivotColumn")
         if(pivotColumn == numberOfVariables) {
             readTable()
         }
@@ -87,13 +99,13 @@ class Hint : AppCompatActivity() {
         for (row in 0 until numberOfEquations) {
 
             val number = matrix.coefficientsAsRationals[row][pivotColumn]
-            println("${number.num} / ${number.den}")
+            //println("${number.num} / ${number.den}")
 
             when {
-                number.equals(ONE) -> {
+                number.equals(cONE) -> {
                     ones[row] = true
                 }
-                number.equals(ZERO) -> {
+                number.equals(cZERO) -> {
                     zeros[row] = true
                 }
                 else -> {
@@ -104,9 +116,9 @@ class Hint : AppCompatActivity() {
 
 
 
-        println("1s: ${ones.count {it}}")
-        println("0s: ${zeros.count {it}}")
-        println("nons: ${nonzeros.count {it}}")
+//        println("1s: ${ones.count {it}}")
+//        println("0s: ${zeros.count {it}}")
+//        println("nons: ${nonzeros.count {it}}")
 
 
 
@@ -124,7 +136,7 @@ class Hint : AppCompatActivity() {
         else if (ones.count {it} >= 1){
             // this is a unit column
             if (ones[pivotRow] && zeros.count{it} == (numberOfEquations-1)) {
-                println("GO TO next column")
+              //  println("GO TO next column")
                 pivotRow += 1
                 pivotColumn += 1
                 if(pivotColumn == numberOfVariables) {
@@ -136,7 +148,7 @@ class Hint : AppCompatActivity() {
 
             }
             else if (ones[pivotRow]) {
-                println(" GO TO OPERATION 3")
+               // println(" GO TO OPERATION 3")
                 operation3Step(nonzeros.indexOf(true))
             }
             else {
@@ -146,7 +158,7 @@ class Hint : AppCompatActivity() {
         else {
             // a non zero exists
             val number = matrix.coefficientsAsRationals[pivotRow][pivotColumn]
-            if (number.equals(ZERO)) {
+            if (number.equals(cZERO)) {
                 // swap with another row
                 var counter = 0
                 for (row in nonzeros.indices) {
@@ -227,8 +239,43 @@ class Hint : AppCompatActivity() {
     }
 
     fun readTable() {
+        println("READ TABLE")
         val hintText: TextView = findViewById(R.id.hintText)
-        hintText.text = "You're done!"
+        hintText.text = ""
+        var solution = "Solution:"
+
+        // x1 = c1 - y1 - z1
+        // x2 = c2 - y2 - z2
+        // x3 = c3 - y3 - z3
+//        solutions[0][1] = matrix.coefficientsAsRationals[0][3]
+//        solutions[1][1] = matrix.coefficientsAsRationals[1][3]
+//        solutions[2][1] = matrix.coefficientsAsRationals[2][3]
+
+        // 1  1  1  a
+        // 0  0  1  b
+
+        for (i in 0 until numberOfEquations) {
+
+            solutions[i][1] = matrix.coefficientsAsRationals[i][3].toString()
+            for (j in i+1 until numberOfVariables) {
+                if (!matrix.coefficientsAsRationals[i][j].equals(cZERO)) {
+                    solutions[i][1] += " +${matrix.coefficientsAsRationals[i][j].negate()}${solutions[j][0]}"
+                    solutions[i][1] = solutions[i][1].replace("+-", "- ", true)
+                }
+            }
+
+            solution += "\n${solutions[i][0]} = ${solutions[i][1]}"
+        }
+//
+//        // if there is a unique solution
+//        for(i in 0 until numberOfVariables) {
+//            solution += "\n${solutions[i][0]} = ${solutions[i][1]}"
+//        }
+//
+
+
+
+        hintText.text = solution
     }
 
 }
