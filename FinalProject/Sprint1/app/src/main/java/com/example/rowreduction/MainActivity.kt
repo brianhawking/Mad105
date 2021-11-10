@@ -35,12 +35,14 @@ class MainActivity : AppCompatActivity() {
         R.id.buttonSubVar
     )
 
+    // all the textviews
     private var equationIDs = arrayOf(
         arrayOf(R.id.coefficientX1, R.id.coefficientY1,R.id.coefficientZ1, R.id.coefficientC1),
         arrayOf(R.id.coefficientX2, R.id.coefficientY2, R.id.coefficientZ2, R.id.coefficientC2),
         arrayOf(R.id.coefficientX3, R.id.coefficientY3, R.id.coefficientZ3, R.id.coefficientC3)
     )
 
+    // all ids for the z variable column
     var column3IDs = arrayOf(
         R.id.equation1Z,
         R.id.equation2Z,
@@ -53,6 +55,7 @@ class MainActivity : AppCompatActivity() {
         R.id.coefficientZ1
     )
 
+    // all ids for equation 3
     var row3IDs = arrayOf(
         R.id.coefficientX3,
         R.id.coefficientY3,
@@ -213,9 +216,15 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                     return false
                 }
+                updateBox(i,j)
             }
         }
         return true
+    }
+
+    fun updateBox(row: Int, column: Int) {
+        val box: TextView = findViewById(equationIDs[row][column])
+        box.text = matrix.coefficientsAsRationals[row][column].toString()
     }
 
     private fun moveBox(direction: Int) : Boolean {

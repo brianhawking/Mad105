@@ -3,6 +3,11 @@ package com.example.rowreduction
 class Rational(var num: Long, var den: Long)  {
     override fun toString() : String {
 
+        this.reduce()
+
+        println("NUM: $num")
+        println("DEN: $den")
+
         if (den < 0) {
             den *= -1L
             num *= -1L
@@ -15,13 +20,23 @@ class Rational(var num: Long, var den: Long)  {
         }
     }
 
-    private fun reduce(): Rational {
+    fun returnedReduced(): Rational {
         var x = this.num
         var y = this.den
         val d = gcd(x,y)
         x /= d
         y /= d
         return Rational(x,y)
+    }
+
+    fun reduce() {
+        var x = this.num
+        var y = this.den
+        val d = gcd(x,y)
+        x /= d
+        y /= d
+        this.num = x
+        this.den = y
     }
 
     private fun gcd(a: Long, b: Long): Long {
@@ -147,7 +162,7 @@ class Rational(var num: Long, var den: Long)  {
     }
 
     fun reciprocal() : Rational {
-        return Rational(den, num).reduce()
+        return Rational(this.den, this.num).returnedReduced()
     }
 
     fun negate(): Rational {
@@ -156,19 +171,19 @@ class Rational(var num: Long, var den: Long)  {
 
 
     operator fun plus(other: Rational) : Rational {
-        return Rational((num * other.den)+(den * other.num), den * other.den).reduce()
+        return Rational((num * other.den)+(den * other.num), den * other.den).returnedReduced()
     }
 
     operator fun minus(other: Rational) : Rational {
-        return Rational((num * other.den)-(den * other.num), den * other.den).reduce()
+        return Rational((num * other.den)-(den * other.num), den * other.den).returnedReduced()
     }
 
     operator fun times(other: Rational) : Rational {
-        return Rational(num * other.num, den * other.den).reduce()
+        return Rational(num * other.num, den * other.den).returnedReduced()
     }
 
     operator fun div(other: Rational) :Rational {
-        return Rational(num * other.den, den * other.num).reduce()
+        return Rational(num * other.den, den * other.num).returnedReduced()
     }
 
     fun equals(other: Rational) : Boolean {

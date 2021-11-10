@@ -43,6 +43,8 @@ class Matrix {
                 val denominator = numbers[1].toFloat()
                 this.coefficientsAsRationals[i][j].num = numerator.toLong()
                 this.coefficientsAsRationals[i][j].den = denominator.toLong()
+                this.coefficientsAsRationals[i][j].reduce()
+                println("REDUCE")
                 true
             } catch (e: NumberFormatException) {
                 println(e)
@@ -77,6 +79,8 @@ class Matrix {
         this.coefficientsAsRationals[i][j].den = den
 //        println("$num/$den")
 
+        this.coefficientsAsRationals[i][j].reduce()
+        println("REDUCE THIS FRACTION")
         return true
 
     }
