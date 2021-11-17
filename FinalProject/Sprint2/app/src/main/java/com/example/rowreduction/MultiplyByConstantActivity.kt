@@ -10,13 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 
-/*
-1. Let's the user select a row and type a constant to multiply by
- */
-
 class MultiplyByConstantActivity : AppCompatActivity() {
 
-    // IDS of the calculator buttons
     private var buttonIDs = arrayOf(
         R.id.button0,
         R.id.button1,
@@ -33,7 +28,6 @@ class MultiplyByConstantActivity : AppCompatActivity() {
         R.id.buttonFrac,
     )
 
-    // IDS of the row buttons
     private var rowButtonIDs = arrayOf(
         R.id.row1Button,
         R.id.row2Button,
@@ -43,14 +37,12 @@ class MultiplyByConstantActivity : AppCompatActivity() {
     var row = 1
     var constant = ""
 
-    // used to determine how many rows (i.e., equations)
     var numberOfEquations = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_multiply_by_constant)
 
-        // get the number of equations from the intent
         val bundle: Bundle? = intent.extras
         numberOfEquations = bundle?.getInt("numberOfEquations")!!
 
@@ -65,6 +57,7 @@ class MultiplyByConstantActivity : AppCompatActivity() {
         setupDoneButtons()
 
     }
+
     fun setupCalculator() {
         
         // cycle through available buttons
@@ -80,7 +73,6 @@ class MultiplyByConstantActivity : AppCompatActivity() {
         }
     }
 
-    // set up the row buttons on top of calculator
     fun setupRowButtons() {
         
         // go through the row selections
@@ -116,7 +108,6 @@ class MultiplyByConstantActivity : AppCompatActivity() {
         }
     }
 
-    // user presses the done button
     fun setupDoneButtons() {
         val cancelButton: Button = findViewById(R.id.buttonCancel)
         cancelButton.setOnClickListener {
@@ -217,9 +208,8 @@ class MultiplyByConstantActivity : AppCompatActivity() {
         textViewResult.text = constant
     }
 
-    // user wants to go back
-    // if b is true, validate and send user back to matrix
     fun prepareReturn(b: Boolean) {
+
 
         // b = true means they want to perform the operation
         if (b && validate()) {
@@ -240,10 +230,8 @@ class MultiplyByConstantActivity : AppCompatActivity() {
 
     }
 
-    // validate the user's constant
     fun validate() : Boolean {
 
-        // can't multiply by 0
         if(constant == "0") {
             Toast.makeText(
                 this,
@@ -255,7 +243,7 @@ class MultiplyByConstantActivity : AppCompatActivity() {
 
         val rational = Rational(0,1)
 
-        // check if the user's constant can be written as a rational
+        println("CHECKING IF $constant is rational")
         return if(!rational.isRational(constant)) {
             Toast.makeText(
                 this,

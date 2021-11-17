@@ -9,23 +9,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 
-/*
-- What's happening in this activity
-1. User enters the coefficients from their system of equations
-2. They move around to different coefficients by pressing R (right) or L (left)
-3. They can enter integers, make it positive or negative, fractions, or deciamls
-4. All decimals are converted to fractions
- */
-
-/*
-- Error Checks
-1. Can't move to different coefficient if current number is invalid
-2. Invalid numbers would be fraction without denominator, divide by 0
- */
-
 class MainActivity : AppCompatActivity() {
 
-    // all the IDs of the calculator buttons
     private var buttonIDs = arrayOf(
         R.id.button0,
         R.id.button1,
@@ -50,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         R.id.buttonSubVar
     )
 
-    // all the textviews IDS of the coefficients
+    // all the textviews
     private var equationIDs = arrayOf(
         arrayOf(R.id.coefficientX1, R.id.coefficientY1,R.id.coefficientZ1, R.id.coefficientC1),
         arrayOf(R.id.coefficientX2, R.id.coefficientY2, R.id.coefficientZ2, R.id.coefficientC2),
@@ -58,7 +43,6 @@ class MainActivity : AppCompatActivity() {
     )
 
     // all ids for the z variable column
-    // used to change the visibility
     var column3IDs = arrayOf(
         R.id.equation1Z,
         R.id.equation2Z,
@@ -72,7 +56,6 @@ class MainActivity : AppCompatActivity() {
     )
 
     // all ids for equation 3
-    // used to change the visibility
     var row3IDs = arrayOf(
         R.id.coefficientX3,
         R.id.coefficientY3,
@@ -86,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         R.id.equation3Equals,
     )
 
-    // variable containing current state of all coefficients
+    // variable containing all coefficients
     var matrix = Matrix()
 
 
@@ -105,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         // current selected box
         textViewResult = findViewById(equationIDs[row][column])
 
-        // add listeners to all the buttons ================================================
+        // add listeners to all the buttons
         for(buttonID in buttonIDs) {
             val b: Button = findViewById(buttonID)
 
@@ -119,14 +102,12 @@ class MainActivity : AppCompatActivity() {
                 else if(buttonID == R.id.buttonSubVar || buttonID == R.id.buttonAddVar || buttonID == R.id.buttonAddEqn || buttonID == R.id.buttonSubEqn) {
                     changeSize(buttonID)
                 }
-                // confirm matrix and move to next activity
                 else if(buttonID == R.id.setupMatrix) {
                      if (validate()) {
                          // move to next screen
                          setupAugmentedMatrix()
                      }
                 }
-                // they pressed a number
                 else {
                     editNumber(buttonID)
                 }
@@ -134,9 +115,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // add or remove the z column or...
-    // add or remove the third equation
-    private fun changeSize(id: Int) {
+    fun changeSize(id: Int) {
 
         // which size adjustment did they make
         when (id) {
@@ -205,8 +184,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    // get data ready to send to next activity
-    private fun setupAugmentedMatrix() {
+    fun setupAugmentedMatrix() {
 
         // set up transition to next activity
         val intent = Intent(this,MainActivity2::class.java)
@@ -225,11 +203,11 @@ class MainActivity : AppCompatActivity() {
     private fun validate() : Boolean {
 
         // search through coefficients. make sure they're all valid numbers
-        // if they're all numbers, convert to Rational object
+        // if they're all numbers, convert to Rational
         for(i in matrix.coefficients.indices) {
             for (j in matrix.coefficients[i].indices) {
 
-                // if the string to rational returns false (invalid number), return false for validate
+                // if the string to rational returns false, return false for validate
                 if (!matrix.stringToRational(i,j)) {
                     Toast.makeText(
                         this,
@@ -238,22 +216,17 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                     return false
                 }
-                // update the number on screen
                 updateBox(i,j)
             }
         }
         return true
     }
 
-    // called when a number needs to be updated on screen
-    private fun updateBox(row: Int, column: Int) {
+    fun updateBox(row: Int, column: Int) {
         val box: TextView = findViewById(equationIDs[row][column])
         box.text = matrix.coefficientsAsRationals[row][column].toString()
     }
 
-    // user presses the L (left) or R (right) box
-    // remove border from current coefficient
-    // add border to next coefficient
     private fun moveBox(direction: Int) : Boolean {
 
         if(!validate()) {
@@ -265,7 +238,6 @@ class MainActivity : AppCompatActivity() {
             textViewResult.setBackgroundColor(Color.TRANSPARENT)
         }
 
-        // moves the box
         when (direction) {
             R.id.buttonLeft -> {
                 // move left
@@ -309,20 +281,16 @@ class MainActivity : AppCompatActivity() {
         textViewResult = findViewById(equationIDs[row][column])
         textViewResult.setBackgroundResource(R.drawable.my_border)
 
-        // return true if you can move box
         return true
     }
 
-    // update number on screen when user presses a number, fraction, or decimal
     private fun editNumber(id: Int) {
 
-        // if number is 0, set it to empty so the user's first number won't lead with 0
-        // ex. 0 -> 04, instead of just 4
+
         if(matrix.coefficients[row][column] == "0") {
             matrix.coefficients[row][column] = ""
         }
 
-        // used to store the current state of coefficient before we modify the number
         val tempResult: String
 
         when (id) {
@@ -390,19 +358,16 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.buttonDot -> {
 
-                // don't add decimal if it already has one
                 if(matrix.coefficients[row][column].contains(".")) {
                     return
                 }
 
-                // don't add a decimal if it has a fraction
                 if(matrix.coefficients[row][column].contains("/")){
                     return
                 }
 
                 matrix.coefficients[row][column] += "."
 
-                // if the first button pressed in a decimal, add a 0
                 if(matrix.coefficients[row][column] == ".") {
                     matrix.coefficients[row][column] = "0."
                 }
@@ -425,7 +390,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // update the current coefficient with new number
+        //println(coefficients[row][column])
         textViewResult = findViewById(equationIDs[row][column])
         textViewResult.text = matrix.coefficients[row][column]
     }

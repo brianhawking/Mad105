@@ -8,27 +8,19 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 
-/* - What's happening in this activity
-1. Displays the rows to the user
-2. User selects two rows they want to swap
-3. This activity returns two integers to previous activity
- */
 class SwapRows : AppCompatActivity() {
 
-    // imageView showing the selected images
     var imageIDs = arrayOf(
         R.id.firstRowImage,
         R.id.secondRowImage
     )
 
-    // row buttons for user to select
     var buttonIDs = arrayOf(
         R.id.row1Button,
         R.id.row2Button,
         R.id.row3Button
     )
 
-    // initialize array containing the rows you want to swap
     var swap = intArrayOf(0,0)
 
     var numberOfEquations = 0
@@ -37,7 +29,6 @@ class SwapRows : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_swap_rows)
 
-        // get number of equations so it knows how many row buttons to display
         val bundle: Bundle? = intent.extras
         numberOfEquations = bundle?.getInt("numberOfEquations")!!
 
@@ -51,12 +42,10 @@ class SwapRows : AppCompatActivity() {
         for(i in buttonIDs.indices) {
             val b: Button = findViewById(buttonIDs[i])
             b.setOnClickListener {
-                // user selects a row. it's added to the swap rows array
                 rowChosen(buttonIDs[i])
             }
         }
         if(numberOfEquations == 2) {
-            // hide row 3 button if there are only two equations
             val b: Button = findViewById(buttonIDs[2])
             b.visibility = View.GONE
         }
@@ -75,7 +64,6 @@ class SwapRows : AppCompatActivity() {
 
     }
 
-    // user wants to return. get the rows array ready
     fun prepareReturn(b: Boolean) {
 
         if (b) {

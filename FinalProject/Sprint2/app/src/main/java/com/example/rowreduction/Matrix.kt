@@ -1,28 +1,19 @@
 package com.example.rowreduction
 
-// matrix object
-// stores the coefficients in rows and columns as multidimensional array
-// coefficients stored as strings and Rationals
-// Rational object is the coefficient written as a numerator and denominator
-// Ex. 4 = (4,1), 1/2 = (1,2), 0.333... = (1,3)
-
 class Matrix {
 
-    // initialize coefficients with 0s
     var coefficients = arrayOf(
         arrayOf("0", "0", "0", "0"),
         arrayOf("0", "0", "0", "0"),
         arrayOf("0", "0", "0", "0")
     )
 
-    // initialize coefficients as 0s, written as 0/1 = (0,1)
     var coefficientsAsRationals = arrayOf(
         arrayOf(Rational(0,1),Rational(0,1),Rational(0,1),Rational(0,1) ),
         arrayOf(Rational(0,1),Rational(0,1),Rational(0,1),Rational(0,1) ),
         arrayOf(Rational(0,1),Rational(0,1),Rational(0,1),Rational(0,1) )
     )
 
-    // make a copy of the current matrix
     fun copy() : Matrix {
         val temp = Matrix()
         for(row in coefficientsAsRationals.indices) {
@@ -35,8 +26,6 @@ class Matrix {
         return temp
     }
 
-    // will convert a coefficient from string to rational
-    // updates in "coefficientAsRational" array
     fun stringToRational(i: Int, j: Int) : Boolean {
 
         if (this.coefficients[i][j] == "0") {
@@ -55,6 +44,7 @@ class Matrix {
                 this.coefficientsAsRationals[i][j].num = numerator.toLong()
                 this.coefficientsAsRationals[i][j].den = denominator.toLong()
                 this.coefficientsAsRationals[i][j].reduce()
+                println("REDUCE")
                 true
             } catch (e: NumberFormatException) {
                 println(e)
@@ -87,15 +77,14 @@ class Matrix {
         }
         this.coefficientsAsRationals[i][j].num = num
         this.coefficientsAsRationals[i][j].den = den
+//        println("$num/$den")
 
         this.coefficientsAsRationals[i][j].reduce()
+        println("REDUCE THIS FRACTION")
         return true
 
     }
 
-    // when user selects the swapRow operation, the matrix is updated here
-    // how to use: matrix.swapRows(rowI, rowJ).
-    // RowI <-> RowJ
     fun swapRows(rowI: Int, rowJ: Int) {
 
         val i = rowI - 1
@@ -113,9 +102,6 @@ class Matrix {
         }
     }
 
-    // when user selects the multiplyByConstant operation, the matrix is updated here
-    // how to use: matrix.multiplyRowByConstant(row, constant).
-    // Operation: c * RowI -> RowI
     fun multiplyRowByConstant(row: Int, constant: String) {
 
         var rational = Rational(0,1)
@@ -129,9 +115,7 @@ class Matrix {
             }
         }
     }
-    // when user selects the rowPlusConstantRow operation, the matrix is updated here
-    // how to use: matrix.rowPlusConstantRow(row, constant).
-    // Operation: RowI + c * Row_Pivot -> RowI
+
     fun rowPlusConstantRow(finalRow: Int, constant: String, pivotRow: Int) {
 
         var rational = Rational(0,1)
@@ -145,5 +129,26 @@ class Matrix {
             }
         }
     }
+
+    // https://rosettacode.org/wiki/Convert_decimal_number_to_rational#Kotlin
+//    fun decimalToRational(d: Double): Rational {
+//        val ds = d.toString().trimEnd('0').trimEnd('.')
+//        val index = ds.indexOf('.')
+//        if (index == -1) return Rational(ds.toLong(), 1L)
+//        var num = ds.replace(".", "").toLong()
+//        var den = 1L
+//        for (n in 1 until ds.length - index) den *= 10L
+//        while (num % 2L == 0L && den % 2L == 0L) {
+//            num /= 2L
+//            den /= 2L
+//        }
+//        while (num % 5L == 0L && den % 5L == 0L) {
+//            num /= 5L
+//            den /= 5L
+//        }
+//
+//        println("$num/$den")
+//        return Rational(num, den)
+//    }
 
 }
