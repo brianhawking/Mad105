@@ -1,5 +1,6 @@
-package com.example.mccfollowalongproject
+package com.example.mccfollowalongprojectpt2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -7,9 +8,9 @@ import android.widget.TextView
 import android.widget.Toast
 
 enum class LoginSuccess {
-        Success,
-        Login,
-        Password
+    Success,
+    Login,
+    Password
 }
 
 
@@ -37,6 +38,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 else -> {
                     Toast.makeText(applicationContext, "Success", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this,MainClassList::class.java)
+                    startActivity(intent)
                 }
             }
         }
