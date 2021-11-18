@@ -135,7 +135,7 @@ class Rational(var num: Long, var den: Long)  {
             val numbers = number.split("/")
 
             // check if the numerator and denominator are actual numbers
-            return return try {
+            return try {
                 val numerator = numbers[0].toFloat()
                 val denominator = numbers[1].toFloat()
                 rational.num = numerator.toLong()

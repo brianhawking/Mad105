@@ -32,7 +32,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="24pt"
-            android:layout_marginRight="10pt"
+            android:layout_marginEnd="10pt"
             android:orientation="horizontal">
 
             <TextView
@@ -41,12 +41,13 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="-7pt"
                 android:layout_weight=".8"
-                android:gravity="center_vertical|right"
-                android:text="1"
+                android:gravity="center_vertical|end"
+                android:text="@string/_1"
                 android:textColor="@color/black"
                 android:textSize="20pt" />
 
             <ImageView
+                android:contentDescription="@string/row1"
                 android:id="@+id/initialRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -54,12 +55,14 @@
                 android:src="@drawable/r1" />
 
             <ImageView
+                android:contentDescription="@string/rightArrow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1.1"
                 android:src="@drawable/right_arrow" />
 
             <ImageView
+                android:contentDescription="@string/row1"
                 android:id="@+id/finalRow"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -91,19 +94,19 @@
                     style="@style/NumberButton"
                     android:id="@+id/row1Button"
                     android:layout_height="25pt"
-                    android:text="Row 1"/>
+                    android:text="@string/row1"/>
 
                 <Button
                     style="@style/NumberButton"
                     android:id="@+id/row2Button"
                     android:layout_height="25pt"
-                    android:text="Row 2"/>
+                    android:text="@string/row2"/>
 
                 <Button
                     style="@style/NumberButton"
                     android:id="@+id/row3Button"
                     android:layout_height="25pt"
-                    android:text="Row 3"/>
+                    android:text="@string/row3"/>
 
             </LinearLayout>
 
@@ -185,7 +188,7 @@
                 <Button
                     android:id="@+id/buttonFrac"
                     style="@style/EquationVariable"
-                    android:text="/" />
+                    android:text="@string/slash" />
 
             </LinearLayout>
 
@@ -196,17 +199,19 @@
                 <Button
                     android:id="@+id/button0"
                     style="@style/NumberButton"
-                    android:text="0" />
+                    android:text="@string/_0" />
 
-                <Button
+                <ImageButton
+                    android:contentDescription="@string/confirm"
                     android:id="@+id/buttonMultiply"
                     style="@style/EquationVariable"
-                    android:text="Multiply" />
+                    android:src="@drawable/check_mark" />
 
-                <Button
+                <ImageButton
+                    android:contentDescription="@string/cancel"
                     android:id="@+id/buttonCancel"
                     style="@style/EquationVariable"
-                    android:text="Cancel" />
+                    android:src="@drawable/cancel" />
 
 
 

@@ -48,6 +48,10 @@ class Matrix {
         if (this.coefficients[i][j].contains("/")) {
             val numbers = coefficients[i][j].split("/")
 
+            if (numbers[1] == "0") {
+                return false
+            }
+
             // check if the numerator and denominator are actual numbers
             return try {
                 val numerator = numbers[0].toFloat()

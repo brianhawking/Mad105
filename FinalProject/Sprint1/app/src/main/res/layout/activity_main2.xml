@@ -188,14 +188,14 @@
             android:layout_width="0dp"
             android:layout_height="25pt"
             android:layout_weight="1"
-            android:text="Undo" />
+            android:text="@string/undo" />
 
         <Button
             android:id="@+id/hint"
             android:layout_width="0dp"
             android:layout_height="25pt"
             android:layout_weight="1"
-            android:text="Hint" />
+            android:text="@string/hint" />
 
     </LinearLayout>
 
@@ -225,6 +225,7 @@
         <ImageButton
             android:id="@+id/swapRows"
             style="@style/RowOperationButton"
+            android:contentDescription="@string/swapRowsButton"
             android:layout_width="match_parent"
             android:src="@drawable/ri_swap_rj" />
 
@@ -241,6 +242,7 @@
         <ImageButton
             android:id="@+id/multByConstant"
             style="@style/RowOperationButton"
+            android:contentDescription="@string/multiplyByConstantButton"
             android:layout_width="match_parent"
             android:src="@drawable/cri" />
 
@@ -257,6 +259,7 @@
         <ImageButton
             android:id="@+id/rowPlusConstantRow"
             style="@style/RowOperationButton"
+            android:contentDescription="@string/rowPlusConstantRow"
             android:layout_width="match_parent"
             android:src="@drawable/ri_plus_crj" />
 

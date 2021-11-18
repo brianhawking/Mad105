@@ -6,13 +6,17 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+
+/*
+1. Third type of row operation
+2. Operation: R_(row you want to change) + constant * R_(pivotRow)
+3. This makes the element in the row you want to change 0.
+ */
 
 class RowPlusConstantRow : AppCompatActivity() {
 
+    // IDS of calculator buttons
     private var buttonIDs = arrayOf(
         R.id.button0,
         R.id.button1,
@@ -29,18 +33,21 @@ class RowPlusConstantRow : AppCompatActivity() {
         R.id.buttonFrac,
     )
 
+    // IDS of the row buttons
     private var rowButtonIDs = arrayOf(
         R.id.row1Button,
         R.id.row2Button,
         R.id.row3Button
     )
 
+    // initialize variables
     var numberOfEquations = 0
     var finalRow = 1
     var constant = "0"
     var pivotRow = 2
     var whichBox = "Initial"
     var constantSign = 1
+
     lateinit var rowImageView: ImageView
     lateinit var constantView: TextView
 
@@ -68,6 +75,7 @@ class RowPlusConstantRow : AppCompatActivity() {
         setupMoveButton()
     }
 
+    // connects the calculator button views
     fun setupCalculator() {
         // cycle through available buttons
         for(buttonID in buttonIDs) {
@@ -82,8 +90,9 @@ class RowPlusConstantRow : AppCompatActivity() {
         }
     }
 
-    fun setupMoveButton() {
-        val b: Button = findViewById(R.id.buttonMove)
+    // move button will change the focus between the rows and constant
+    private fun setupMoveButton() {
+        val b: ImageButton = findViewById(R.id.buttonMove)
         b.setOnClickListener {
 
             when(whichBox) {
@@ -116,6 +125,7 @@ class RowPlusConstantRow : AppCompatActivity() {
 
     }
 
+    // calculator
     private fun editNumber(id: Int) {
 
         if(whichBox != "Constant") {
@@ -181,20 +191,6 @@ class RowPlusConstantRow : AppCompatActivity() {
                     constantSign = 1
                 }
 
-//                if(constant.contains("-", true)) {
-//                    // remove -
-////                    tempResult = constant.drop(1)
-////                    constant = tempResult
-//                    val view: TextView = findViewById(R.id.Plus)
-//                    view.text = "+"
-//                }
-//                else {
-//                    val temp = constant
-////                    constant = "-$temp"
-//                    val view: TextView = findViewById(R.id.Plus)
-//                    view.text = "-"
-//                }
-
             }
             R.id.buttonFrac -> {
 
@@ -214,12 +210,13 @@ class RowPlusConstantRow : AppCompatActivity() {
             }
         }
 
+        // update number on screen
         val textViewResult: TextView = findViewById(R.id.constant)
         textViewResult.text = constant
     }
 
-
-    fun setupRowButtons() {
+    // set up the row buttons for user to select
+    private fun setupRowButtons() {
         // go through the row selections
         for (element in rowButtonIDs) {
 
@@ -228,6 +225,7 @@ class RowPlusConstantRow : AppCompatActivity() {
             // set up the listeners
             rowButton.setOnClickListener {
 
+                // these are the three row images on screen
                 val initialRowImage: ImageView = findViewById(R.id.initialRow)
                 val pivotRowImage: ImageView = findViewById(R.id.pivotRow)
                 val finalRowImage: ImageView = findViewById(R.id.finalRow)
@@ -273,21 +271,25 @@ class RowPlusConstantRow : AppCompatActivity() {
         }
     }
 
-    fun setupDoneButtons() {
-        val cancelButton: Button = findViewById(R.id.buttonCancel)
+    // user presses cancel or done button
+    private fun setupDoneButtons() {
+        val cancelButton: ImageButton = findViewById(R.id.buttonCancel)
         cancelButton.setOnClickListener {
             // go back without sending any data
             prepareReturn(false)
         }
 
-        val confirm: Button = findViewById(R.id.buttonDone)
+        val confirm: ImageButton = findViewById(R.id.buttonDone)
         confirm.setOnClickListener {
             // go back with data
             prepareReturn(true)
         }
     }
 
-    fun prepareReturn(b: Boolean) {
+    // user wants to go back.
+    // b = false means they canceled the operation
+    // b = true means they pressed "DONE" and wants to do operation
+    private fun prepareReturn(b: Boolean) {
 
         // b = true means they want to perform the operation
         if (!b) {
@@ -314,6 +316,8 @@ class RowPlusConstantRow : AppCompatActivity() {
 
     }
 
+    // validate by checking if the initial row and pivot row are different
+    // make sure the constant is a valid number
     fun validate() : Boolean {
 
         // check if final and pivot rows are the same
@@ -326,6 +330,7 @@ class RowPlusConstantRow : AppCompatActivity() {
             return false
         }
 
+        // check if the constant is a valid rational number
         val rational = Rational(0,1)
         println("CHECKING IF $constant is rational")
         return if(!rational.isRational(constant)) {

@@ -247,10 +247,11 @@
                 android:text="@string/del"
                 />
 
-            <Button
+            <ImageButton
+                android:contentDescription="@string/leftArrow"
                 style="@style/EquationVariable"
                 android:id="@+id/buttonLeft"
-                android:text="L"
+                android:src="@drawable/left_arrow"
                 />
 
         </TableRow>
@@ -284,10 +285,11 @@
                 android:text="@string/PlusMinus"
                 />
 
-            <Button
+            <ImageButton
                 style="@style/EquationVariable"
                 android:id="@+id/buttonRight"
-                android:text="R"
+                android:contentDescription="@string/rightArrow"
+                android:src="@drawable/right_arrow_white"
                 />
 
         </TableRow>
@@ -318,13 +320,13 @@
             <Button
                 style="@style/EquationVariable"
                 android:id="@+id/buttonAddEqn"
-                android:text="+E"
+                android:text="@string/addEquation"
                 />
 
             <Button
                 style="@style/EquationVariable"
                 android:id="@+id/buttonAddVar"
-                android:text="+V"
+                android:text="@string/addVariable"
 
                 />
         </TableRow>
@@ -337,7 +339,7 @@
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/buttonFrac"
-                android:text="/"
+                android:text="@string/slash"
                 />
 
             <Button
@@ -349,19 +351,19 @@
             <Button
                 style="@style/NumberButton"
                 android:id="@+id/buttonDot"
-                android:text="."
+                android:text="@string/decimal"
                 />
 
             <Button
                 style="@style/EquationVariable"
                 android:id="@+id/buttonSubEqn"
-                android:text="-E"
+                android:text="@string/subtractEquation"
                 />
 
             <Button
                 style="@style/EquationVariable"
                 android:id="@+id/buttonSubVar"
-                android:text="-V"
+                android:text="@string/subtractVariable"
                 />
 
         </TableRow>

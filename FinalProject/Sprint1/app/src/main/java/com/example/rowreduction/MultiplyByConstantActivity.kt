@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 
@@ -118,13 +119,13 @@ class MultiplyByConstantActivity : AppCompatActivity() {
 
     // user presses the done button
     fun setupDoneButtons() {
-        val cancelButton: Button = findViewById(R.id.buttonCancel)
+        val cancelButton: ImageButton = findViewById(R.id.buttonCancel)
         cancelButton.setOnClickListener {
             // go back without sending any data
             prepareReturn(false)
         }
 
-        val confirmSwap: Button = findViewById(R.id.buttonMultiply)
+        val confirmSwap: ImageButton = findViewById(R.id.buttonMultiply)
         confirmSwap.setOnClickListener {
             // go back with data
             prepareReturn(true)

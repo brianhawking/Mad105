@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 
 /* - What's happening in this activity
@@ -61,13 +62,13 @@ class SwapRows : AppCompatActivity() {
             b.visibility = View.GONE
         }
 
-        val cancelButton: Button = findViewById(R.id.cancelSwap)
+        val cancelButton: ImageButton = findViewById(R.id.cancelSwap)
         cancelButton.setOnClickListener {
             // go back without sending any data
             prepareReturn(false)
         }
 
-        val confirmSwap: Button = findViewById(R.id.confirmSwap)
+        val confirmSwap: ImageButton = findViewById(R.id.confirmSwap)
         confirmSwap.setOnClickListener {
             // go back with data
             prepareReturn(true)
@@ -85,6 +86,7 @@ class SwapRows : AppCompatActivity() {
                     return
                 }
 
+            // array contains the rows user wants to swap
             val array = intArrayOf(0,0)
             for(i in swap.indices) {
                 when (swap[i]) {
@@ -108,7 +110,10 @@ class SwapRows : AppCompatActivity() {
 
     }
 
-    fun rowChosen(id: Int) {
+    // user selects a row, add it to rows array
+    // covers what happens if user already selected it
+    // covers deselecting a row
+    private fun rowChosen(id: Int) {
         if(swap.contains(id)) {
 
             // get index (either 0 or 1)

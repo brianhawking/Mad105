@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 
@@ -13,7 +14,7 @@ import android.widget.Toast
 - What's happening in this activity
 1. User enters the coefficients from their system of equations
 2. They move around to different coefficients by pressing R (right) or L (left)
-3. They can enter integers, make it positive or negative, fractions, or deciamls
+3. They can enter integers, make it positive or negative, fractions, or decimals
 4. All decimals are converted to fractions
  */
 
@@ -107,28 +108,38 @@ class MainActivity : AppCompatActivity() {
 
         // add listeners to all the buttons ================================================
         for(buttonID in buttonIDs) {
-            val b: Button = findViewById(buttonID)
 
-            b.setOnClickListener {
+            var button: Button
+            var imageButton: ImageButton
 
+            if (buttonID == R.id.buttonRight || buttonID == R.id.buttonLeft) {
+                imageButton = findViewById(buttonID)
                 // user selects to move
-                if( (buttonID == R.id.buttonLeft) || (buttonID == R.id.buttonRight)) {
+                imageButton.setOnClickListener {
                     moveBox(buttonID)
                 }
-                // user wants to change size of system
-                else if(buttonID == R.id.buttonSubVar || buttonID == R.id.buttonAddVar || buttonID == R.id.buttonAddEqn || buttonID == R.id.buttonSubEqn) {
-                    changeSize(buttonID)
-                }
-                // confirm matrix and move to next activity
-                else if(buttonID == R.id.setupMatrix) {
-                     if (validate()) {
-                         // move to next screen
-                         setupAugmentedMatrix()
-                     }
-                }
-                // they pressed a number
-                else {
-                    editNumber(buttonID)
+            }
+            else {
+
+                button = findViewById(buttonID)
+
+                button.setOnClickListener {
+
+                    // user wants to change size of system
+                    if (buttonID == R.id.buttonSubVar || buttonID == R.id.buttonAddVar || buttonID == R.id.buttonAddEqn || buttonID == R.id.buttonSubEqn) {
+                        changeSize(buttonID)
+                    }
+                    // confirm matrix and move to next activity
+                    else if (buttonID == R.id.setupMatrix) {
+                        if (validate()) {
+                            // move to next screen
+                            setupAugmentedMatrix()
+                        }
+                    }
+                    // they pressed a number
+                    else {
+                        editNumber(buttonID)
+                    }
                 }
             }
         }
