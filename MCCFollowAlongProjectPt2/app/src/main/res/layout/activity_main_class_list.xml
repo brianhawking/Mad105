@@ -160,21 +160,29 @@
             android:text="@string/degree" />
     </LinearLayout>
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/certDegreeSwitch"
+    <RelativeLayout
+        android:id="@+id/linearLayoutSwitch"
         android:layout_width="match_parent"
-        android:layout_height="51dp"
-        android:layout_margin="0pt"
-        android:checked="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textOff="@string/cert"
-        android:textOn="@string/degree"
-        android:foregroundGravity="fill_vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
-        app:showText="true"
-        tools:checked="true" />
+        >
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/certDegreeSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="0pt"
+            android:layout_marginBottom="0pt"
+            android:checked="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textOff="@string/cert"
+            android:textOn="@string/degree"
+            app:showText="true"
+            tools:checked="true" />
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:id="@+id/cert_degree_spinners"
@@ -182,7 +190,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10pt"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/certDegreeSwitch"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutSwitch"
         tools:layout_editor_absoluteX="1dp">
 
         <Spinner
