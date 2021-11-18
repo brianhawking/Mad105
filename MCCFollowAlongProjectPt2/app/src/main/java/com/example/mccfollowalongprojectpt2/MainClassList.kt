@@ -36,6 +36,12 @@ class MainClassList : AppCompatActivity() {
 
         firstName.requestFocus()
 
+        // hide certificates when screen starts
+        majorList.visibility = View.VISIBLE
+        majorsText.visibility = View.VISIBLE
+        certificateList.visibility = View.GONE
+        certificateText.visibility = View.GONE
+
         switchCertDegree.setOnCheckedChangeListener { buttonView, isChecked ->
             if(isChecked) {
                 majorList.visibility = View.VISIBLE
