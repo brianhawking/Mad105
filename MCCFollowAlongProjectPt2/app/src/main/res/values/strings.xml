@@ -9,6 +9,8 @@
     <string name="lastName">Last Name</string>
     <string name="phone">Phone</string>
     <string name="dateOfBirth">Date of Birth</string>
+    <string name="day">Day</string>
+    <string name="year">Year</string>
 
     <string name="errMessageLogin">Invalid login. Please retry.</string>
     <string name="errMessagePassword">Invalid password. Please retry.</string>
