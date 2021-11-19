@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MCCFollowAlongProjectPt2">
         <activity
-            android:name=".ActivityChooseClass"
-            android:exported="false" />
-        <activity
             android:name=".ChooseClass"
             android:exported="false" />
         <activity

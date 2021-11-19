@@ -175,11 +175,10 @@
             android:layout_marginTop="0pt"
             android:layout_marginBottom="0pt"
             android:checked="true"
-            app:switchMinWidth="100pt"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textOff="@string/cert"
             android:textOn="@string/degree"
-
+            app:showText="true"
             tools:checked="true" />
 
     </RelativeLayout>
