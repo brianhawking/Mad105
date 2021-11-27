@@ -6,4 +6,223 @@
     android:layout_height="match_parent"
     tools:context=".ChooseClass">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt"
+            android:layout_marginTop="5pt">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sectionClass"
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt">
+
+            <CheckedTextView
+                android:id="@+id/ctv1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkMark="?android:attr/textCheckMark"
+                android:text="@string/class1"
+                android:textSize="18sp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10pt"
+            android:layout_marginRight="10pt">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroup1">
+
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:text="@string/timeRb1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rb2"
+                    android:text="@string/timeRb2"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt">
+
+            <CheckedTextView
+                android:id="@+id/ctv2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkMark="?android:attr/textCheckMark"
+                android:text="@string/class2"
+                android:textSize="18sp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10pt"
+            android:layout_marginRight="10pt">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroup2">
+
+                <RadioButton
+                    android:id="@+id/rb3"
+                    android:text="@string/timeRb3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rb4"
+                    android:text="@string/timeRb4"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt">
+
+            <CheckedTextView
+                android:id="@+id/ctv3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkMark="?android:attr/textCheckMark"
+                android:text="@string/class3"
+                android:textSize="18sp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10pt"
+            android:layout_marginRight="10pt">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroup3">
+
+                <RadioButton
+                    android:id="@+id/rb5"
+                    android:text="@string/timeRb5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rb6"
+                    android:text="@string/timeRb6"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5pt"
+            android:layout_marginRight="5pt">
+
+            <CheckedTextView
+                android:id="@+id/ctv4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkMark="?android:attr/textCheckMark"
+                android:text="@string/class4"
+                android:textSize="18sp"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10pt"
+            android:layout_marginRight="10pt">
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroup4">
+
+                <RadioButton
+                    android:id="@+id/rb7"
+                    android:text="@string/timeRb2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rb8"
+                    android:text="@string/timeRb5"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/nextButton"
+                android:text="@string/nextButton"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

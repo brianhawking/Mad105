@@ -61,7 +61,7 @@ class MainClassList : AppCompatActivity() {
             // check data
             if (isDataValid()) {
                 var dateOfBirth = ""
-                dateOfBirth = month.selectedItem.toString() + "/" + day.text.toString() + "/" + year.text.toString()
+                dateOfBirth = month.selectedItem.toString() + " " + day.text.toString() + ", " + year.text.toString()
 
                 val nextScreen = Intent(this, ChooseClass::class.java)
                 nextScreen.putExtra("firstName", firstName.text.toString())
@@ -72,7 +72,7 @@ class MainClassList : AppCompatActivity() {
 
                 if(switchCertDegree.isChecked) {
                     // chose degree
-                    nextScreen.putExtra("isDegreeCert", "Degree")
+                    nextScreen.putExtra("isDegreeCert", "Associates Degree")
                     nextScreen.putExtra("degreeCert", majorList.selectedItem.toString())
                 }
                 else {
